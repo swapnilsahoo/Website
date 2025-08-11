@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swapnil Sahoo </title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+            color: #111827;
+        }
+        .glass {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 41, 55, 0.18);
+        }
+        .hero-bg {
+            background: linear-gradient(120deg, #2563eb 0%, #1e293b 100%);
+        }
+        .footer-bg {
+            background: linear-gradient(90deg, #111827 0%, #1e293b 100%);
+        }
+        .card {
+            background: rgba(255,255,255,0.95);
+            border: none;
+            box-shadow: 0 4px 24px 0 rgba(31, 41, 55, 0.10);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px 0 rgba(37, 99, 235, 0.18);
+        }
+        .price-tag {
+            background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px 0 rgba(37, 99, 235, 0.15);
+        }
+        .price-tag.free {
+            background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+        }
+        .price-tag.yellow {
+            background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #e0e7ef;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+    <!-- NAVIGATION BAR -->
+    <nav class="bg-white/80 backdrop-blur-lg shadow-lg fixed w-full top-0 left-0 z-50 border-b border-blue-100">
+    <div class="container mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-center gap-2">
+        <!-- Brand Button Centered -->
+        <div class="mb-2 sm:mb-0">
+           
+        </div>
+        <!-- Mobile Brand Button -->
+        <a href="https://www.greatlakes.edu.in/faculty/swapnil-sahoo" target="_blank" class="sm:hidden bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 shadow-md">
+            Assistant Professor
+        </a>
+        <!-- Hamburger Menu Button (Mobile) -->
+        <button id="nav-toggle" class="sm:hidden flex items-center px-3 py-2 border rounded text-blue-600 border-blue-600 hover:text-blue-800 hover:border-blue-800 focus:outline-none ml-2">
+            <svg class="h-6 w-6" viewBox="0 0 24 24">
+                <rect y="5" width="24" height="2" rx="1" fill="#2563EB"/>
+                <rect y="11" width="24" height="2" rx="1" fill="#2563EB"/>
+                <rect y="17" width="24" height="2" rx="1" fill="#2563EB"/>
+            </svg>
+        </button>
+        <!-- Navigation Links Centered -->
+        <div id="nav-menu" class="hidden sm:flex flex-row items-center justify-center space-x-4 absolute sm:static top-16 left-0 w-full sm:w-auto bg-white/95 sm:bg-transparent shadow-md sm:shadow-none z-50 sm:z-auto rounded-b-xl sm:rounded-none">
+            <a href="#" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium px-5 py-2 rounded-lg shadow hover:from-blue-700 hover:to-blue-900 transition-all text-base">Home</a>
+            <a href="#about" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium px-5 py-2 rounded-lg shadow hover:from-blue-700 hover:to-blue-900 transition-all text-base">About</a>
+            <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium px-5 py-2 rounded-lg shadow hover:from-blue-700 hover:to-blue-900 transition-all text-base">LinkedIn</a>
+            <a href="https://x.com/swapnilsahoo" target="_blank" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium px-5 py-2 rounded-lg shadow hover:from-blue-700 hover:to-blue-900 transition-all text-base">X</a>
+        </div>
+    </div>
+</nav>
+    <script>
+        // Simple JS for toggling mobile nav
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- HERO SECTION -->
+    <header class="hero-bg text-white pt-32 pb-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <!-- Left Side: Image -->
+            <div class="flex-1 flex justify-center md:justify-end">
+                <img src="assets/profile_pic.jpg" alt="Swapnil Sahoo" class="rounded-2xl shadow-2xl w-48 h-48 sm:w-64 sm:h-64 object-cover border-4 border-white/30 glass">
+            </div>
+            <!-- Right Side: Content -->
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-blue-200 font-semibold tracking-wider text-base sm:text-lg mb-2">Seasoned Leader with over 17 years in Partnership Strategy, Relationship Management & Technology</p>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold my-3 leading-tight drop-shadow-lg">Dr.Swapnil Sahoo</h1>
+                <a href="" target="_blank" class="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-xl text-lg transition-all duration-300 shadow-lg mb-4 mt-2">
+                    Assistant Professor – Strategy & Entrepreneurship, Great Lakes Institute of Management, Gurgaon
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: SERVICES -->
+        <section class="py-16 bg-transparent">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">What I Offer</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mb-12 text-base sm:text-lg">Empowering growth through consulting, teaching, and community building. Explore my services below.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="card rounded-2xl overflow-hidden p-8 flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Consulting" class="w-16 h-16 mb-4">
+                        <h3 class="font-bold text-xl mb-2">Consulting</h3>
+                        <p class="text-gray-500">Strategic advice for business transformation and growth.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="card rounded-2xl overflow-hidden p-8 flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Courses" class="w-16 h-16 mb-4">
+                        <h3 class="font-bold text-xl mb-2">Courses</h3>
+                        <p class="text-gray-500">Innovative courses designed for real-world impact.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="card rounded-2xl overflow-hidden p-8 flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Self Development" class="w-16 h-16 mb-4">
+                        <h3 class="font-bold text-xl mb-2">Self Development</h3>
+                        <p class="text-gray-500">Personalized coaching for professional and personal growth.</p>
+                    </div>
+                    <!-- Service Card 4 -->
+                    <div class="card rounded-2xl overflow-hidden p-8 flex flex-col items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135773.png" alt="Community" class="w-16 h-16 mb-4">
+                        <h3 class="font-bold text-xl mb-2">Community</h3>
+                        <p class="text-gray-500">Building networks for collaborative learning and success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: COURSES -->
+        <section id="recent-sessions" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 text-center">
+            
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 text-gray-900">Publications, Articles and Presentations</h2>
+                <!-- Replace your Publications <ul> with this two-column responsive list -->
+<ul class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="https://link.springer.com/article/10.1007/s10961-024-10098-2" class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            Impact of Institutional Pressures and Security on Blockchain Technology Adoption and Organizational Performance: An Empirical Study
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            The Journal of Technology Transfer.
+        </div>
+    </li>
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="https://www.dqindia.com/features/safer-internet-day-how-entrepreneurs-are-building-a-more-secure-digital-future-8707009#:~:text=By%20Prof.%20Swapnil%20Sahoo%2C%20Assistant%20Professor%2C%C2%A0Entrepreneurship%2C%20Innovation%2C%20Strategy%2C%20Great%20Lakes%20Institute%20of%20Management%2C%20Gurgaon" class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            How Entrepreneurs Are Building a More Secure Digital Future
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            DataQuest, Authored Article, February 10, 2025
+        </div>
+    </li>
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="https://www.cnbctv18.com/budget/union-budget-2025-expectations-live-tax-relief-gst-fm-nirmala-sitharaman-stock-market-steel-industry-january-30-liveblog-19548795.htm#:~:text=A%20comprehensive%20strategy,of%20Management%2C%20Gurgaon." class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            Budget 2025 Expectations LIVE: The steel industry seeks protectionist measures & incentives
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            CNBC TV18, Quoted in Story, January 30, 2025
+        </div>
+    </li>
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="https://www.timesnownews.com/business-economy/budget-2025-expectations-live-updates-finance-minister-nirmala-sitharaman-income-tax-slabs-expectations-economic-survey-liveblog-117719709" class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            Economic Survey 2025 LIVE: FM Sitharaman To Table Report In Lok Sabha Shortly
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            Times Now, Quoted in Story, January 31, 2025
+        </div>
+    </li>
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="https://www.financialexpress.com/jobs-career/education-union-budget-2025-stakeholders-expectations-for-transforming-indias-education-landscape-3712498/#:~:text=Prof.%20Swapnil%20Sahoo,Study%20in%20India.%E2%80%99" class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            Union Budget 2025: Stakeholders' expectations for transforming India's education landscape
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            Financial Express, Quoted in Story, January 11, 2025
+        </div>
+    </li>
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="https://www.business-standard.com/budget/news/union-budget-2025-expectations-live-updates-nirmala-sitharaman-tax-relief-education-india-gdp-budget-latest-news-125011700390_1.html?1737104612#:~:text=%27As%20India%20approaches,of%20Management%2C%20Gurgaon." class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            Union Budget 2025 expectations updates: Geospatial sector seeks funding for satellite tech
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            Business Standard, Quoted in Story, January 17, 2025
+        </div>
+    </li>
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="#" class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            Union Budget 2025 Expectations: Higher Education Sector Hopes for Reforms, Investments, and Incentives
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            Brainfeed Higher Education Plus, Quoted in Story, January 29, 2025
+        </div>
+    </li>
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="https://highereducationplus.com/pre-budget-2025-expectations-higher-education-sector-hopes-for-reforms-investments-and-incentives/#:~:text=Fostering%20Startups%20and,the%20middle%20class." class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            Budget 2025 Expectations: Education Sector's Expectations from This Year's Budget
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            ET Now, Quoted in Story, January 24, 2025
+        </div>
+    </li>
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="https://www.etnownews.com/budget/budget-2025-expectations-education-sectors-expectations-from-this-years-budget-article-117516818#:~:text=Swapnil%20Sahoo%2C%20Assistant,and%20rural%20innovation.%22" class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            Union Budget 2025 Expectations for Education and Skills
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            Education 21 and Curriculum Magazine, Quoted in Story, January 26, 2025
+        </div>
+    </li>
+    <li class="bg-white rounded-xl shadow p-5 hover:shadow-lg transition-shadow">
+        <a href="https://education21.in/union-budget-2025-expectations-for-education-and-skills/#:~:text=%E2%80%9C%20The%20Startup%20India,of%20Management%2C%20Gurgaon" class="text-blue-700 hover:underline font-semibold text-lg" target="_blank">
+            Pre-Budget Expectations of the Higher Education Sector
+        </a>
+        <div class="text-gray-500 text-sm mt-1">
+            Nagaland Post, Quoted in Story, January 21, 2025
+        </div>
+    </li>
+</ul>
+            </div>
+        </section>
+
+        <!-- SECTION 3: ABOUT -->
+        <section class="py-16 bg-transparent" id="about">
+            <div class="container mx-auto px-4">
+                <div class="glass grid grid-cols-1 md:grid-cols-2 gap-12 items-center p-10">
+                    <!-- Left Side: Image -->
+                    <div class="mb-6 md:mb-0 flex justify-center">
+                        <img src="assets/profile_pic.jpg" alt="About" class="rounded-2xl shadow-xl w-full max-w-xs sm:max-w-md md:max-w-full">
+                    </div>
+                    <!-- Right Side: Text -->
+                    <div class="text-gray-700">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About </h2>
+                        <p class="mb-6">Swapnil Sahoo holds a Ph.D. from XLRI Jamshedpur, specializing in Entrepreneurship and Innovation. With 17 years of extensive corporate experience, he has held senior strategic roles at leading organizations such as Wipro, Accenture, Cognizant, Mahindra, and most recently, as Global Partnership Head at 42Gears Mobility Pvt Ltd. In these roles, he excelled in building relationships with C-suite executives and decision-makers across various industries in Europe, the Middle East, and Africa region.
+
+His research focuses on entrepreneurial resourcefulness, emphasizing Neurodiversity, Dynamic Capabilities, Frugal Innovation, Jugaad, Bricolage, Effectuation, and Family Business Dynamics. Swapnil’s work explores how businesses creatively leverage limited resources to drive growth and innovation, embodying the spirit of jugaad in resource-constrained environments. His research includes multiple projects currently under review in prestigious journals.
+
+An advocate for continuous learning and innovation, Swapnil fosters a collaborative and mentoring-oriented approach in both academia and professional spaces. He holds a B.Tech in Electronics and Telecommunications from Utkal University (ITER) and an MBA with dual specializations in Finance and Marketing from Xavier Institute of Management, Bhubaneswar (XIMB).</p>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>17+ years of experience in strategy, management, and technology.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Assistant Professor at Great Lakes Institute of Management.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Committed to lifelong learning and sharing knowledge.</span>
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-xl text-lg transition-all duration-300 shadow-lg">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: RECENT COURSES / BLOG -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 text-center">
+                <p class="text-blue-600 font-semibold text-base sm:text-lg">Online Learning</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Recent Sessions</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mb-12 text-base sm:text-lg">Explore my latest Sessions and articles designed to help you grow and succeed.</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                    <!-- 20 Dummy Course Boxes: 5 rows x 4 columns -->
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white", >
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 1">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session1_What is Strategy.html">WHAT IS STRATEGY?</a></h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 2">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session2_Disruption of the Auto Industry.html">Disruption of the Auto industry by  Tesla</a></h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 3">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session2.html">Session 2</a></h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 4">
+                        <h3 class="font-bold text-base mb-1 text-center" ><a href="assets\Session3_Purpose_Values_Strategy.html">Purpose_Values_Strategy</a></h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <!-- Repeat for 20 boxes -->
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 5">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session4_5forcesV1.html">Porters 5 Forces</a></h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 6">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Internal Analysis_Session6_v1.html">Internal Analysis</a></h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                   
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 8">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session7_V2.html">Patagonia Part 1</a> </h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <!-- Row 3 -->
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 9">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session7_8_V3.html">Patagonia Part 2</a> </h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 10">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session 9_10 _ CompetitiveAdvantage through Generic Strategies_v2.html"> Competitive strategies through Generic Strategies</a> 10</h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 11">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session 9_10 _ Competitive Strategies_v3.html">Competitive Strategies</a> 11</h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 12">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session11_12_Nvidia_BlueOcean_Strategy_Tech&Innovation_v4.html">Nvidia Blue Ocean Strategy</a> 12</h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                    <!-- Row 4 -->
+                    <div class="card text-left rounded-xl shadow p-4 flex flex-col items-center bg-white">
+                        <img src="assets\reading.png" class="w-24 h-16 object-cover rounded mb-2" alt="Course 13">
+                        <h3 class="font-bold text-base mb-1 text-center"><a href="assets\Session 13_14_Corporate Strategy_VI_HI_DiversificationS_v6.html">Coropate Strategy- Diversification</a> 13</h3>
+                        <p class="text-gray-500 text-xs mb-1 text-center">click to view</p>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-bg text-gray-300 pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:justify-between items-center md:items-start gap-8">
+                <!-- Brand & Social -->
+                <div class="mb-8 md:mb-0">
+                    <h4 class="text-2xl font-bold text-white mb-2">Swapnil Sahoo</h4>
+                    <p class="mb-4 text-gray-400">Let's connect and start a new project together.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" class="text-blue-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
+                        </a>
+                        <a href="https://x.com/swapnilsahoo" target="_blank" class="text-blue-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.162 0h-20.324c-.997 0-1.838.841-1.838 1.838v20.324c0 .997.841 1.838 1.838 1.838h20.324c.997 0 1.838-.841 1.838-1.838v-20.324c0-.997-.841-1.838-1.838-1.838zm-5.162 17.338h-2.338l-3.338-4.338-3.338 4.338h-2.338l4.338-5.338-4.338-5.338h2.338l3.338 4.338 3.338-4.338h2.338l-4.338 5.338 4.338 5.338z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Footer Links -->
+                <div class="grid grid-cols-2 md:grid-cols-2 gap-8 text-center md:text-left">
+                    <div>
+                        <h5 class="font-semibold text-white uppercase tracking-wider mb-4">Explore</h5>
+                        <nav class="flex flex-col space-y-2">
+                            <a href="#" class="hover:text-white transition-colors">Home</a>
+                            <a href="#about" class="hover:text-white transition-colors">About</a>
+                            <a href="#" class="hover:text-white transition-colors">Courses</a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-white uppercase tracking-wider mb-4"> Connect</h5>
+                        <nav class="flex flex-col space-y-2">
+                            <a href="mailto:swapnil.sahoo@gmail.com" class="hover:text-white transition-colors">Contact</a>
+                            <a href="#" class="hover:text-white transition-colors">Join Community</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-xs sm:text-sm text-gray-500">
+                <p>&copy; 2025 Swapnil Sahoo. All Rights Reserved. Designed with ❤️.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
