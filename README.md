@@ -28,9 +28,4 @@ Built with   HTML5  ,   Tailwind CSS  , and minimal JavaScript for a modern, res
 
          
 
-     🚀 Getting Started
-
-       1️⃣ Clone the Repository
-```bash
-git clone https://github.com/your   username/your   portfolio   repo.git
-cd your   portfolio   repo
+     
