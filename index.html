@@ -118,27 +118,52 @@
 ">
    
      
-</div>
-      <div style="
-    background-color: #e6f2ff;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    display: inline-block;
-    text-align: center;
+<!-- Floating Chat with Me Button -->
+<a href="https://your-chat-link.com" class="chat-btn">
+    💬 Chat with me
+</a>
+
+<style>
+.chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-weight: bold;
     font-family: Arial, sans-serif;
-">
-    <h2 style="margin-top: 0; color: #004080;">
-        💬 Chat with my AI Agent
-    </h2>
-    <iframe
-        src="https://swapnilsahoo118514-personal.hf.space"
-        frameborder="0"
-        width="600"
-        height="450"
-        style="border-radius: 8px; border: none;"
-    ></iframe>
-</div>
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+    animation: bounce 2s infinite, glow 1.5s infinite alternate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
+}
+
+/* Glow Animation */
+@keyframes glow {
+    from { box-shadow: 0 0 10px rgba(255,255,255,0.4); }
+    to { box-shadow: 0 0 20px rgba(255,255,255,0.8); }
+}
+
+/* Optional: Hover Effect */
+.chat-btn:hover {
+    background-color: #222;
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+</style>
+
 
 
             <!-- Left Side: Image -->
@@ -442,6 +467,7 @@ An advocate for continuous learning and innovation, Swapnil fosters a collaborat
 </body>
 
 </html>
+
 
 
 
