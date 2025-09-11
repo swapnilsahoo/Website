@@ -13,142 +13,110 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0c0a09; 
-            color: #d6d3d1; 
+            /* RATIONALE: A slightly off-white background is easier on the eyes than pure white. */
+            background-color: #f8fafc; 
+            color: #1f2937; /* Dark slate for high contrast and readability */
         }
-        .aurora-background {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background: radial-gradient(circle at 10% 20%, rgba(22, 78, 99, 0.4), transparent 40%),
-                        radial-gradient(circle at 80% 90%, rgba(13, 71, 161, 0.4), transparent 40%);
-            animation: move-aurora 20s infinite alternate;
-            z-index: -1;
-        }
-        @keyframes move-aurora {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .glass-card {
-            background: rgba(31, 41, 55, 0.3); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        .content-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
         }
         .fade-in-section {
             opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* --- UPDATED: Glass Chat Button --- */
-        /* RATIONALE: Replaced the old button with a style that matches the glass-card aesthetic. */
-        .chat-glass-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1000;
-            padding: 0.75rem 1.25rem;
-            font-weight: 500;
-            text-decoration: none;
-            color: #d6d3d1;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        .chat-glass-btn:hover {
-            transform: translateY(-5px);
-            background: rgba(31, 41, 55, 0.5);
-        }
     </style>
 </head>
-<body>
-    <div class="aurora-background"></div>
-
-    <a href="https://swapnilsahoo118514-personal.hf.space" target="_blank" rel="noopener noreferrer" class="glass-card chat-glass-btn">
-        💬 Chat with me
-    </a>
-
-    <nav class="glass-card fixed w-11/12 md:w-auto top-4 left-1/2 -translate-x-1/2 z-50 rounded-full">
-        <div class="container mx-auto px-6 py-3 flex items-center justify-center space-x-6 text-sm">
-            <a href="#about" class="text-stone-300 hover:text-white transition-colors">About</a>
-            <a href="#publications" class="text-stone-300 hover:text-white transition-colors">Publications</a>
-            <a href="#teaching" class="text-stone-300 hover:text-white transition-colors">Teaching</a>
-            <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" rel="noopener noreferrer" class="text-stone-300 hover:text-white transition-colors">LinkedIn</a>
+<body class="antialiased">
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+        <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+            <a href="#" class="text-lg font-bold text-slate-800">Dr. Swapnil Sahoo</a>
+            <div class="hidden md:flex items-center space-x-5 text-sm font-medium text-slate-600">
+                <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+                <a href="#publications" class="hover:text-blue-600 transition-colors">Publications</a>
+                <a href="#teaching" class="hover:text-blue-600 transition-colors">Teaching</a>
+                <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors">LinkedIn</a>
+            </div>
         </div>
     </nav>
     
-    <main class="relative z-10">
-        <header class="pt-32 pb-20">
-            <div class="container mx-auto px-6">
-                <div class="glass-card p-10 md:p-16 text-center fade-in-section">
-                    <img src="profile_pic.jpg" alt="Professional headshot of Dr. Swapnil Sahoo" class="mx-auto rounded-full w-32 h-32 md:w-40 md:h-40 object-cover shadow-2xl mb-6 border-4 border-slate-600" width="160" height="160">
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">Dr. Swapnil Sahoo</h1>
-                    <p class="text-lg md:text-xl text-stone-300 mt-3 max-w-3xl mx-auto">Assistant Professor – Strategy & Entrepreneurship</p>
-                </div>
-            </div>
+    <main class="container mx-auto px-6 py-12">
+        <header class="mb-12 text-center fade-in-section">
+             <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900">Strategy & Entrepreneurship</h1>
+             <p class="text-lg text-slate-500 mt-2">The Academic & Professional Portfolio of Dr. Swapnil Sahoo</p>
         </header>
 
-        <section id="about" class="py-12 md:py-16 fade-in-section">
-            <div class="container mx-auto px-6">
-                <div class="glass-card p-10 md:p-12">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
-                        <div class="md:col-span-1 flex justify-center"><img src="secondimage.jpg" alt="Dr. Swapnil Sahoo at a conference" class="rounded-lg shadow-xl w-full max-w-xs" loading="lazy" width="400" height="500"></div>
-                        <div class="md:col-span-2">
-                            <h2 class="text-3xl font-bold text-white mb-6">About Me</h2>
-                            <div class="space-y-4 text-stone-300 leading-relaxed">
-                                <p>With a Ph.D. from XLRI Jamshedpur and 17 years of corporate experience, my work exists at the intersection of academic theory and strategic practice.</p>
-                                <p>My research investigates entrepreneurial resourcefulness, with a focus on Dynamic Capabilities, Frugal Innovation, and Neurodiversity. I explore how organizations innovate and thrive within constraints.</p>
-                            </div>
-                        </div>
-                    </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="content-card p-6 text-center fade-in-section">
+                    <img src="profile_pic.jpg" alt="Dr. Swapnil Sahoo" class="mx-auto rounded-full w-32 h-32 object-cover mb-4 border-4 border-slate-100 shadow-md">
+                    <h2 class="text-xl font-bold text-slate-800">Dr. Swapnil Sahoo</h2>
+                    <p class="text-slate-500 text-sm">Assistant Professor, Great Lakes Institute of Management, Gurgaon</p>
+                    <a href="mailto:swapnil.sahoo@gmail.com" class="mt-4 inline-block bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Contact Me</a>
                 </div>
-            </div>
-        </section>
-
-        <section id="publications" class="py-12 md:py-16 fade-in-section">
-            <div class="container mx-auto px-6">
-                <div class="glass-card p-10 md:p-12">
-                    <h2 class="text-3xl font-bold text-white mb-8 text-center">Publications & Media</h2>
-                    <ul class="space-y-4 max-w-3xl mx-auto">
-                        <li><a href="https://link.springer.com/article/10.1007/s10961-024-10098-2" class="block p-3 rounded-md hover:bg-slate-700/50 transition-colors" target="_blank" rel="noopener noreferrer"><p class="font-semibold text-cyan-400">Impact of Institutional Pressures and Security on Blockchain Adoption</p><p class="text-sm text-stone-400 mt-1">The Journal of Technology Transfer</p></a></li>
-                        <li><a href="https://www.dqindia.com/features/safer-internet-day-how-entrepreneurs-are-building-a-more-secure-digital-future-8707009" class="block p-3 rounded-md hover:bg-slate-700/50 transition-colors" target="_blank" rel="noopener noreferrer"><p class="font-semibold text-cyan-400">How Entrepreneurs Are Building a More Secure Digital Future</p><p class="text-sm text-stone-400 mt-1">DataQuest, 2025</p></a></li>
+                <div class="content-card p-6 fade-in-section">
+                    <h3 class="font-bold text-slate-800 border-b pb-2 mb-3">Expertise</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>▶ Frugal Innovation & Jugaad</li>
+                        <li>▶ Dynamic Capabilities</li>
+                        <li>▶ Entrepreneurial Resourcefulness</li>
+                        <li>▶ Neurodiversity in Business</li>
+                        <li>▶ Family Business Dynamics</li>
                     </ul>
                 </div>
+            </aside>
+
+            <div class="lg:col-span-2 space-y-8">
+                <section id="about" class="content-card p-8 fade-in-section">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4">About Me</h2>
+                    <div class="space-y-4 text-slate-700 leading-relaxed">
+                        <p>With a Ph.D. from XLRI Jamshedpur and 17 years of corporate experience at firms like Wipro and Accenture, my work exists at the intersection of academic theory and strategic practice.</p>
+                        <p>My research investigates entrepreneurial resourcefulness, exploring how organizations innovate and thrive within constraints—a concept central to modern strategic thinking in both emerging and developed markets.</p>
+                    </div>
+                </section>
+
+                <section id="publications" class="content-card p-8 fade-in-section">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4">Publications & Media</h2>
+                    <ul class="space-y-4">
+                        <li><a href="https://link.springer.com/article/10.1007/s10961-024-10098-2" class="block p-3 rounded-md hover:bg-slate-50 transition-colors" target="_blank" rel="noopener noreferrer"><p class="font-semibold text-blue-700">Impact of Institutional Pressures and Security on Blockchain Adoption</p><p class="text-sm text-slate-500 mt-1">The Journal of Technology Transfer</p></a></li>
+                        <li><a href="https://www.dqindia.com/features/safer-internet-day-how-entrepreneurs-are-building-a-more-secure-digital-future-8707009" class="block p-3 rounded-md hover:bg-slate-50 transition-colors" target="_blank" rel="noopener noreferrer"><p class="font-semibold text-blue-700">How Entrepreneurs Are Building a More Secure Digital Future</p><p class="text-sm text-slate-500 mt-1">DataQuest, 2025</p></a></li>
+                         </ul>
+                </section>
+
+                <section id="teaching" class="content-card p-8 fade-in-section">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4">Teaching & Sessions</h2>
+                    <p class="text-slate-600 mb-6">Selected course materials on strategic management and innovation.</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <a href="Session1_What is Strategy.html" class="block p-3 bg-slate-50 text-center rounded-lg hover:bg-slate-100 transition-colors"><h3 class="font-semibold text-sm text-slate-700">What is Strategy?</h3></a>
+                        <a href="Session2_Disruption of the Auto Industry.html" class="block p-3 bg-slate-50 text-center rounded-lg hover:bg-slate-100 transition-colors"><h3 class="font-semibold text-sm text-slate-700">Auto Industry Disruption</h3></a>
+                        <a href="Session3_Purpose_Values_Strategy.html" class="block p-3 bg-slate-50 text-center rounded-lg hover:bg-slate-100 transition-colors"><h3 class="font-semibold text-sm text-slate-700">Purpose & Values</h3></a>
+                        <a href="Session4_5forcesV1.html" class="block p-3 bg-slate-50 text-center rounded-lg hover:bg-slate-100 transition-colors"><h3 class="font-semibold text-sm text-slate-700">Porter's 5 Forces</h3></a>
+                        <a href="Internal Analysis_Session6_v1.html" class="block p-3 bg-slate-50 text-center rounded-lg hover:bg-slate-100 transition-colors"><h3 class="font-semibold text-sm text-slate-700">Internal Analysis</h3></a>
+                         </div>
+                </section>
             </div>
-        </section>
-        
-        <section id="teaching" class="py-12 md:py-16 fade-in-section">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold text-white">Teaching & Sessions</h2>
-                    <p class="text-stone-400 mt-2">Course materials on strategic management and innovation.</p>
-                </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-                    <a href="Session1_What is Strategy.html" class="glass-card p-4 text-center hover:border-cyan-400/50 transition-all duration-300"><h3 class="font-semibold text-sm text-white">WHAT IS STRATEGY?</h3><p class="text-stone-400 text-xs mt-1">Session 1</p></a>
-                    <a href="Session2_Disruption of the Auto Industry.html" class="glass-card p-4 text-center hover:border-cyan-400/50 transition-all duration-300"><h3 class="font-semibold text-sm text-white">Disruption of the Auto Industry</h3><p class="text-stone-400 text-xs mt-1">Session 2</p></a>
-                    <a href="Session3_Purpose_Values_Strategy.html" class="glass-card p-4 text-center hover:border-cyan-400/50 transition-all duration-300"><h3 class="font-semibold text-sm text-white">Purpose & Values</h3><p class="text-stone-400 text-xs mt-1">Session 3</p></a>
-                    <a href="Session4_5forcesV1.html" class="glass-card p-4 text-center hover:border-cyan-400/50 transition-all duration-300"><h3 class="font-semibold text-sm text-white">Porter's 5 Forces</h3><p class="text-stone-400 text-xs mt-1">Session 4</p></a>
-                    <a href="Internal Analysis_Session6_v1.html" class="glass-card p-4 text-center hover:border-cyan-400/50 transition-all duration-300"><h3 class="font-semibold text-sm text-white">Internal Analysis</h3><p class="text-stone-400 text-xs mt-1">Session 6</p></a>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
-    <footer class="py-16 text-center fade-in-section">
-        <p class="text-xs text-stone-500">&copy; 2025 Dr. Swapnil Sahoo. All Rights Reserved.</p>
+    <footer class="text-center py-10 mt-8 border-t">
+        <p class="text-sm text-slate-500">&copy; 2025 Dr. Swapnil Sahoo. All Rights Reserved.</p>
     </footer>
 
     <script defer>
         const sections = document.querySelectorAll('.fade-in-section');
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
+                    obs.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
