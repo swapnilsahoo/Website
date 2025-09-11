@@ -3,61 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Dr. Swapnil Sahoo | Strategy & Entrepreneurship</title>
     <meta name="description" content="The academic and professional portfolio of Dr. Swapnil Sahoo, Assistant Professor of Strategy & Entrepreneurship at Great Lakes Institute of Management, Gurgaon.">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /*
-         * RATIONALE: Consolidating all styles here improves organization.
-         * For a live site, this block should be moved to an external style.css file.
-        */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc; /* Subtle off-white background */
-            color: #1f2937; /* Darker gray for better readability */
+            background-color: #ffffff; /* A clean, bright white background */
+            color: #1d1d1f; /* Apple's primary text color for deep contrast */
         }
 
-        /* --- Refined Component Styles --- */
-        .academic-header {
-            background-color: #111827; /* Simple, dark background for contrast */
-        }
-        .academic-footer {
-            background-color: #1f2937;
-        }
-
-        /* Subtle glassmorphism effect, toned down for professionalism */
-        .glass-subtle {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* --- Dynamic Navigation Bar Style --- */
+        /* Class added via JS on scroll */
+        .scrolled-nav {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(10px) !important;
+            border-bottom-width: 1px !important;
+            border-color: #e5e7eb !important;
         }
 
-        /* Card styling with softer shadows and smoother transitions */
-        .info-card {
-            background-color: white;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* --- Section Animation: The "Flow" Effect --- */
+        /* RATIONALE: This creates the smooth fade-in-on-scroll effect. */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07);
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        /* --- Toned-down Chat Button --- */
+
+        /* Minor refinements for a cleaner look */
+        .publication-item {
+             transition: background-color 0.3s ease;
+        }
+        .publication-item:hover {
+            background-color: #f9fafb;
+        }
+
+        /* Toned-down Chat Button */
         .chat-btn {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            background-color: #1f2937;
-            color: #ffffff;
+            background-color: #000;
+            color: #fff;
             padding: 12px 20px;
             border-radius: 50px;
             font-weight: 500;
@@ -67,196 +63,160 @@
             transition: transform 0.2s ease-in-out, background-color 0.2s;
         }
         .chat-btn:hover {
-            background-color: #111827;
             transform: scale(1.05);
-        }
-
-        /* Custom scrollbar for a polished look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #e5e7eb;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #6b7280;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4b5563;
         }
     </style>
 </head>
 <body class="antialiased">
-    <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full top-0 left-0 z-50 border-b border-gray-200">
-        <div class="container mx-auto px-6 py-3 flex items-center justify-between">
-            <a href="#" class="text-xl font-bold text-gray-800">Dr. Swapnil Sahoo</a>
-            <div id="nav-menu-desktop" class="hidden md:flex items-center space-x-2">
-                <a href="#" class="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Home</a>
-                <a href="#about" class="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">About</a>
-                <a href="#publications" class="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Publications</a>
-                <a href="#teaching" class="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Teaching</a>
-                <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">LinkedIn</a>
+
+    <nav id="navbar" class="fixed w-full top-0 left-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-xl font-semibold text-gray-800">Dr. Swapnil Sahoo</a>
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-700">
+                <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+                <a href="#publications" class="hover:text-blue-600 transition-colors">Publications</a>
+                <a href="#teaching" class="hover:text-blue-600 transition-colors">Teaching</a>
+                <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors">LinkedIn</a>
             </div>
-            <button id="nav-toggle" class="md:hidden focus:outline-none" aria-label="Toggle navigation" aria-controls="nav-menu-mobile" aria-expanded="false">
-                <svg class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             <button id="nav-toggle" class="md:hidden focus:outline-none" aria-label="Toggle navigation">
+                 <svg class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
         </div>
-        <div id="nav-menu-mobile" class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3">
-             <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md">Home</a>
-             <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md">About</a>
-             <a href="#publications" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md">Publications</a>
-             <a href="#teaching" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md">Teaching</a>
-             <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md">LinkedIn</a>
-        </div>
-    </nav>
-
+         </nav>
+    
     <a href="https://swapnilsahoo118514-personal.hf.space" target="_blank" rel="noopener noreferrer" class="chat-btn">💬 Chat with me</a>
 
-    <header class="academic-header text-white pt-32 pb-20">
-        <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-10">
-            <div class="flex-1 text-center md:text-left">
-                <h1 class="text-4xl sm:text-5xl font-bold leading-tight">Dr. Swapnil Sahoo</h1>
-                <p class="text-xl sm:text-2xl text-gray-300 mt-2">Assistant Professor – Strategy & Entrepreneurship</p>
-                <p class="text-lg text-gray-400 mt-1">Great Lakes Institute of Management, Gurgaon</p>
-            </div>
-            <div class="flex-shrink-0">
-                <img src="profile_pic.jpg" alt="Professional headshot of Dr. Swapnil Sahoo" class="rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover border-4 border-gray-600 shadow-lg" width="192" height="192">
-            </div>
+    <header class="bg-slate-50">
+        <div class="container mx-auto px-6 text-center pt-48 pb-32">
+            <img src="profile_pic.jpg" alt="Professional headshot of Dr. Swapnil Sahoo" class="mx-auto rounded-full w-40 h-40 object-cover shadow-2xl mb-8 border-4 border-white" width="160" height="160">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">Dr. Swapnil Sahoo</h1>
+            <p class="text-lg md:text-xl text-gray-600 mt-4 max-w-3xl mx-auto">Assistant Professor of Strategy & Entrepreneurship at the Great Lakes Institute of Management, focusing on frugal innovation and entrepreneurial resourcefulness.</p>
         </div>
     </header>
 
     <main>
-        <section id="about" class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-                    <div class="lg:col-span-1 flex justify-center">
-                        <img src="secondimage.jpg" alt="Dr. Swapnil Sahoo speaking at a conference." class="rounded-lg shadow-xl w-full max-w-sm" loading="lazy" width="400" height="500">
+        <section id="about" class="py-24 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+                    <div class="md:col-span-1">
+                        <img src="secondimage.jpg" alt="Dr. Swapnil Sahoo speaking at a conference." class="rounded-lg shadow-xl w-full" loading="lazy" width="400" height="500">
                     </div>
-                    <div class="lg:col-span-2 text-gray-700">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
-                        <div class="space-y-4 text-base leading-relaxed">
-                            <p>I hold a Ph.D. from XLRI Jamshedpur, specializing in Entrepreneurship and Innovation. With 17 years of corporate experience, I have held senior strategic roles at organizations such as Wipro, Accenture, Cognizant, and Mahindra.</p>
-                            <p>My research focuses on entrepreneurial resourcefulness, emphasizing Neurodiversity, Dynamic Capabilities, Frugal Innovation, and Family Business Dynamics. It explores how businesses creatively leverage limited resources to drive growth, embodying the spirit of 'jugaad' in resource-constrained environments.</p>
-                            <p>I am an advocate for continuous learning and innovation, fostering a collaborative and mentoring-oriented approach in both academia and professional spaces. I hold a B.Tech from Utkal University and an MBA from Xavier Institute of Management, Bhubaneswar (XIMB).</p>
+                    <div class="md:col-span-2">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">About Me</h2>
+                        <div class="space-y-4 text-gray-700 leading-relaxed">
+                            <p>With a Ph.D. from XLRI Jamshedpur and 17 years of corporate experience at firms like Wipro and Accenture, my work exists at the intersection of academic theory and strategic practice.</p>
+                            <p>My research investigates entrepreneurial resourcefulness, with a focus on Dynamic Capabilities, Frugal Innovation, and Neurodiversity. I explore how organizations innovate and thrive within constraints, a concept central to modern strategic thinking.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-3 text-gray-900">Areas of Expertise</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-12">My work integrates academic research with practical application across several key domains.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="info-card rounded-lg p-6">
-                        <h3 class="font-bold text-xl mb-2">Consulting</h3>
-                        <p class="text-gray-600 text-sm">Providing strategic advice for business transformation and sustainable growth.</p>
-                    </div>
-                    <div class="info-card rounded-lg p-6">
-                        <h3 class="font-bold text-xl mb-2">Teaching & Courses</h3>
-                        <p class="text-gray-600 text-sm">Designing and delivering innovative courses with real-world impact.</p>
-                    </div>
-                    <div class="info-card rounded-lg p-6">
-                        <h3 class="font-bold text-xl mb-2">Research</h3>
-                        <p class="text-gray-600 text-sm">Focusing on resourcefulness, frugal innovation, and neurodiversity in entrepreneurship.</p>
-                    </div>
-                    <div class="info-card rounded-lg p-6">
-                        <h3 class="font-bold text-xl mb-2">Community Building</h3>
-                        <p class="text-gray-600 text-sm">Building academic and professional networks for collaborative success.</p>
-                    </div>
+        <section id="publications" class="py-24 md:py-32 bg-slate-50 fade-in-section">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Publications & Media</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto mb-12">A selection of my published research and contributions to public discourse on strategy and innovation.</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="publications" class="py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-10 text-gray-900">Publications & Media</h2>
-                <ul class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                    <li class="border-l-2 border-blue-600 pl-4 py-1">
-                        <a href="https://link.springer.com/article/10.1007/s10961-024-10098-2" class="text-blue-700 hover:underline font-semibold" target="_blank" rel="noopener noreferrer">Impact of Institutional Pressures and Security on Blockchain Adoption</a>
-                        <div class="text-gray-500 text-sm mt-1">The Journal of Technology Transfer</div>
+                <ul class="space-y-6">
+                    <li class="publication-item rounded-lg p-4">
+                        <a href="https://link.springer.com/article/10.1007/s10961-024-10098-2" class="block" target="_blank" rel="noopener noreferrer">
+                            <p class="font-semibold text-blue-700">Impact of Institutional Pressures and Security on Blockchain Technology Adoption</p>
+                            <p class="text-sm text-gray-500 mt-1">The Journal of Technology Transfer</p>
+                        </a>
                     </li>
-                    <li class="border-l-2 border-blue-600 pl-4 py-1">
-                        <a href="https://www.dqindia.com/features/safer-internet-day-how-entrepreneurs-are-building-a-more-secure-digital-future-8707009" class="text-blue-700 hover:underline font-semibold" target="_blank" rel="noopener noreferrer">How Entrepreneurs Are Building a More Secure Digital Future</a>
-                        <div class="text-gray-500 text-sm mt-1">DataQuest, 2025</div>
-                    </li>
-                     <li class="border-l-2 border-blue-600 pl-4 py-1">
-                        <a href="https://www.cnbctv18.com/budget/union-budget-2025-expectations-live-tax-relief-gst-fm-nirmala-sitharaman-stock-market-steel-industry-january-30-liveblog-19548795.htm" class="text-blue-700 hover:underline font-semibold" target="_blank" rel="noopener noreferrer">Budget 2025 Expectations LIVE</a>
-                        <div class="text-gray-500 text-sm mt-1">CNBC TV18, 2025</div>
-                    </li>
-                     <li class="border-l-2 border-blue-600 pl-4 py-1">
-                        <a href="https://www.financialexpress.com/jobs-career/education-union-budget-2025-stakeholders-expectations-for-transforming-indias-education-landscape-3712498/" class="text-blue-700 hover:underline font-semibold" target="_blank" rel="noopener noreferrer">Union Budget 2025: Stakeholders' expectations</a>
-                        <div class="text-gray-500 text-sm mt-1">Financial Express, 2025</div>
+                    <li class="publication-item rounded-lg p-4">
+                        <a href="https://www.dqindia.com/features/safer-internet-day-how-entrepreneurs-are-building-a-more-secure-digital-future-8707009" class="block" target="_blank" rel="noopener noreferrer">
+                            <p class="font-semibold text-blue-700">How Entrepreneurs Are Building a More Secure Digital Future</p>
+                            <p class="text-sm text-gray-500 mt-1">DataQuest, Authored Article, 2025</p>
+                        </a>
                     </li>
                     </ul>
             </div>
         </section>
-
-        <section id="teaching" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-3 text-gray-900">Teaching & Presentations</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-12">A selection of course materials and session presentations.</p>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    <a href="Session1_What is Strategy.html" class="info-card text-center rounded-lg p-4 block">
+        
+        <section id="teaching" class="py-24 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6 max-w-6xl text-center">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Teaching & Presentations</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-12">Selected materials from my courses on strategic management and innovation.</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <a href="Session1_What is Strategy.html" class="block p-4 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors">
                         <h3 class="font-semibold text-sm">What is Strategy?</h3>
                         <p class="text-gray-500 text-xs mt-1">Session 1</p>
                     </a>
-                    <a href="Session2_Disruption of the Auto Industry.html" class="info-card text-center rounded-lg p-4 block">
-                        <h3 class="font-semibold text-sm">Disruption in the Auto Industry</h3>
-                        <p class="text-gray-500 text-xs mt-1">Session 2</p>
-                    </a>
-                     <a href="Session3_Purpose_Values_Strategy.html" class="info-card text-center rounded-lg p-4 block">
-                        <h3 class="font-semibold text-sm">Purpose, Values, Strategy</h3>
-                        <p class="text-gray-500 text-xs mt-1">Session 3</p>
-                    </a>
-                    <a href="Session4_5forcesV1.html" class="info-card text-center rounded-lg p-4 block">
+                    <a href="Session4_5forcesV1.html" class="block p-4 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors">
                         <h3 class="font-semibold text-sm">Porter's 5 Forces</h3>
                         <p class="text-gray-500 text-xs mt-1">Session 4</p>
                     </a>
-                    <a href="Internal Analysis_Session6_v1.html" class="info-card text-center rounded-lg p-4 block">
-                        <h3 class="font-semibold text-sm">Internal Analysis</h3>
-                        <p class="text-gray-500 text-xs mt-1">Session 6</p>
+                    <a href="Session11_12_Nvidia_BlueOcean_Strategy_Tech&Innovation_v4.html" class="block p-4 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors">
+                        <h3 class="font-semibold text-sm">Blue Ocean Strategy</h3>
+                        <p class="text-gray-500 text-xs mt-1">Session 12</p>
                     </a>
                     </div>
             </div>
         </section>
+
     </main>
 
-    <footer class="academic-footer text-gray-400 pt-16 pb-8">
-        <div class="container mx-auto px-6">
-            <div class="text-center">
-                <h4 class="text-xl font-bold text-white mb-2">Dr. Swapnil Sahoo</h4>
-                <p class="mb-4">Strategy & Entrepreneurship</p>
-                <div class="flex justify-center space-x-6 mb-8">
-                    <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="text-gray-400 hover:text-white transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
-                    </a>
-                    <a href="https://x.com/swapnilsahoo" target="_blank" rel="noopener noreferrer" aria-label="X/Twitter Profile" class="text-gray-400 hover:text-white transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-                    </a>
-                    <a href="mailto:swapnil.sahoo@gmail.com" aria-label="Email" class="text-gray-400 hover:text-white transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
-                <p>&copy; 2025 Dr. Swapnil Sahoo. All Rights Reserved.</p>
-            </div>
+    <footer class="bg-slate-100 fade-in-section">
+        <div class="container mx-auto px-6 py-16 text-center">
+            <h3 class="text-2xl font-bold">Contact</h3>
+            <p class="text-gray-600 mt-2 mb-6">Feel free to reach out for collaborations or inquiries.</p>
+             <div class="flex justify-center space-x-6">
+                <a href="mailto:swapnil.sahoo@gmail.com" aria-label="Email" class="text-gray-500 hover:text-gray-800 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="text-gray-500 hover:text-gray-800 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
+                </a>
+             </div>
+             <p class="text-xs text-gray-500 mt-12">&copy; 2025 Dr. Swapnil Sahoo. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script defer>
-        const navToggle = document.getElementById('nav-toggle');
-        const navMenuMobile = document.getElementById('nav-menu-mobile');
-        
-        navToggle.addEventListener('click', function() {
-            const isExpanded = navMenuMobile.classList.toggle('hidden');
-            navToggle.setAttribute('aria-expanded', !isExpanded);
+        // --- 1. Dynamic Navbar Script ---
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Add class after scrolling 50px
+                nav.classList.add('scrolled-nav');
+            } else {
+                nav.classList.remove('scrolled-nav');
+            }
         });
+
+        // --- 2. Scroll Animation Script (Intersection Observer) ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.1 // trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // --- 3. Mobile Navigation Toggle Script (Optional, if needed) ---
+        const navToggle = document.getElementById('nav-toggle');
+        // Add your mobile menu element ID here
+        // const navMenuMobile = document.getElementById('nav-menu-mobile'); 
+        navToggle.addEventListener('click', () => {
+             // navMenuMobile.classList.toggle('hidden');
+             alert("Mobile menu functionality can be added here.");
+        });
+
     </script>
 </body>
 </html>
