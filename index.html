@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -8,197 +7,100 @@
     <meta name="description" content="The academic and professional portfolio of Dr. Swapnil Sahoo, focusing on strategy, innovation, and entrepreneurial resourcefulness.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" type="image/png" href="superman.png">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-   <style>
-    body {
-        font-family: 'Poppins', sans-serif;
-        /* FROM: A very dark navy blue */
-        /* TO: A brighter, more dynamic blue gradient */
-        background-color: #1e40af; /* A fallback color */
-        background-image: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
-        color: #dbeafe;
-    }
-    .animated-background {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100vh;
-        /* FROM: Subtle radial gradients on a dark background */
-        /* TO: Brighter, more visible gradients to add a luminous feel */
-        background: radial-gradient(circle at 15% 50%, rgba(147, 197, 253, 0.25), transparent 40%),
-                    radial-gradient(circle at 85% 30%, rgba(96, 165, 250, 0.25), transparent 40%);
-        animation: move-gradient 15s infinite alternate ease-in-out;
-        z-index: -1;
-    }
-    @keyframes move-gradient {
-        from { transform: scale(1) rotate(0deg); opacity: 0.7; }
-        to { transform: scale(1.3) rotate(360deg); opacity: 1; }
-    }
-    .blue-glass-card {
-        /* FROM: Dark blue glass with a black shadow */
-        /* TO: Lighter, whiter glass with a white/blue "glow" shadow */
-        background: rgba(255, 255, 255, 0.1); /* White translucent background */
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.2); /* A more visible white border */
-        border-radius: 1rem;
-        box-shadow: 0 8px 32px rgba(219, 234, 254, 0.1); /* THIS is the "white shadow" */
-    }
-    .fade-in-section {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-in-section.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .social-icon {
-        fill: currentColor;
-        width: 1.25rem;
-        height: 1.25rem;
-        transition: color 0.3s;
-    }
-    .social-icon:hover {
-        color: #ffffff;
-    }
-</style>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0c142b; 
+            color: #dbeafe;
+        }
+        .animated-background {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.2), transparent 40%),
+                        radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.2), transparent 40%);
+            animation: move-gradient 15s infinite alternate ease-in-out;
+            z-index: -1;
+        }
+        @keyframes move-gradient {
+            from { transform: scale(1) rotate(0deg); }
+            to { transform: scale(1.2) rotate(360deg); }
+        }
+        .blue-glass-card {
+            background: rgba(30, 64, 175, 0.2); backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        .fade-in-section {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        .social-icon { fill: currentColor; width: 1.25rem; height: 1.25rem; transition: color 0.3s; }
+        .social-icon:hover { color: #ffffff; }
+
+        /* --- NEW: Chat Widget Styles --- */
+        .chat-widget { position: fixed; bottom: 25px; right: 25px; z-index: 1000; }
+        #chat-toggle-button {
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: transform 0.3s ease;
+        }
+        #chat-toggle-button:hover { transform: scale(1.1); }
+        #chat-window {
+            position: absolute; bottom: 80px; right: 0;
+            width: 350px; height: 500px;
+            display: flex; flex-direction: column;
+            opacity: 0; visibility: hidden; transform: translateY(20px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        }
+        #chat-window.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        #message-container { flex-grow: 1; overflow-y: auto; padding: 1rem; }
+        .chat-message { max-width: 80%; width: fit-content; padding: 0.5rem 1rem; border-radius: 1rem; margin-bottom: 0.5rem; }
+        .chat-message.user { background-color: #3b82f6; color: white; margin-left: auto; border-bottom-right-radius: 0.25rem; }
+        .chat-message.bot { background-color: rgba(30, 58, 138, 0.5); color: #dbeafe; border-bottom-left-radius: 0.25rem; }
+        .chat-message.bot.typing { font-style: italic; color: #93c5fd; }
+        #chat-input-form { display: flex; padding: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        #chat-input {
+            flex-grow: 1; background: rgba(30, 58, 138, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px; padding: 0.5rem 1rem; color: white; outline: none;
+        }
+        #chat-input::placeholder { color: #93c5fd; }
+        #chat-input:focus { border-color: #3b82f6; }
+    </style>
 </head>
 <body class="antialiased">
     <div class="animated-background"></div>
 
-    <header class="py-3 text-center">
-        <div class="container mx-auto px-6 flex justify-between items-center text-sm text-blue-300/70">
-            <p class="font-medium">© Dr. Swapnil Sahoo 2025</p>
-            <div class="flex items-center space-x-4">
-                <a href="https://x.com/swapnilsahoo" target="_blank" rel="noopener noreferrer" aria-label="X Profile"><svg class="social-icon" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
-                <a href="https://www.instagram.com/swapnilsahoo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile"><svg class="social-icon" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8s.01 2.444.048 3.297c.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.297-.048c.852-.04 1.433-.174 1.942-.372.526-.205.972-.478 1.417-.923.445-.444.718-.891.923-1.417.198-.51.333-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.444-.048-3.297c-.04-.852-.174-1.433-.372-1.942a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.09-.333-1.942-.372C10.445.01 10.173 0 8 0zm0 1.442c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.282.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.598.92c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.389-.009-3.232-.047c-.78-.036-1.203-.166-1.485-.276a2.47 2.47 0 0 1-.92-.598 2.47 2.47 0 0 1-.598-.92c-.11-.28-.24-.705-.276-1.485C1.44 10.389 1.442 10.136 1.442 8s.002-2.389.047-3.232c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.843-.038 1.096-.047 3.232-.047zM8 3.882a4.108 4.108 0 1 0 0 8.216 4.108 4.108 0 0 0 0-8.216zm0 6.772A2.664 2.664 0 1 1 8 5.328a2.664 2.664 0 0 1 0 5.328zm4.965-6.402a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92z"/></svg></a>
-                <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><svg class="social-icon" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.482-.635 1.482-1.414s-.645-1.414-1.482-1.414S2.54 3.1 2.54 3.882s.645 1.414 1.203 1.414zm7.258 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.873h2.443V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg></a>
+    <header class="py-3 text-center"></header>
+    <nav class="blue-glass-card sticky top-4 z-50 mx-auto max-w-xl"></nav>
+    <main class="container mx-auto px-6 py-12"></main>
+    <footer class="text-center py-10 mt-8"></footer>
+
+    <div class="chat-widget">
+        <div id="chat-window" class="blue-glass-card">
+            <div class="p-4 border-b border-blue-300/20 text-center font-bold text-white">
+                Chat with my AI Assistant
             </div>
-        </div>
-    </header>
-
-    <nav class="blue-glass-card sticky top-4 z-50 mx-auto max-w-xl">
-        <div class="container mx-auto px-6 py-3 flex items-center justify-center space-x-5 text-sm font-medium text-blue-200">
-            <a href="#about" class="hover:text-white transition-colors">About</a>
-            <a href="#publications" class="hover:text-white transition-colors">Publications</a>
-            <a href="#conferences" class="hover:text-white transition-colors">Conferences</a>
-            <a href="#teaching" class="hover:text-white transition-colors">Teaching</a>
-        </div>
-    </nav>
-    
-    <main class="container mx-auto px-6 py-12">
-        <header class="mb-12 text-center fade-in-section">
-             <h1 class="text-4xl md:text-5xl font-extrabold text-white">Strategy & Entrepreneurship</h1>
-             <p class="text-lg text-blue-200 mt-2">The Academic & Professional Portfolio of Dr. Swapnil Sahoo</p>
-        </header>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <aside class="lg:col-span-1 space-y-8">
-                <div class="blue-glass-card p-6 text-center fade-in-section">
-                    <img src="profile_pic.jpg" alt="Dr. Swapnil Sahoo" class="mx-auto rounded-full w-32 h-32 object-cover mb-4 border-4 border-blue-900/50 shadow-md">
-                    <h2 class="text-xl font-bold text-white">Dr. Swapnil Sahoo</h2>
-                    <p class="text-blue-200 text-sm">Assistant Professor, Great Lakes Institute of Management, Gurgaon</p>
-                    <a href="mailto:swapnil.sahoo@greatlakes.edu.in" class="mt-4 inline-block bg-sky-500 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-sky-600 transition-colors">Contact Me</a>
-                </div>
-
-                <div class="blue-glass-card p-6 fade-in-section">
-                    <h3 class="font-bold text-white border-b border-blue-300/20 pb-2 mb-3">Education</h3>
-                    <ul class="text-sm text-blue-200 space-y-2">
-                        <li><b>Ph.D. (Entrepreneurship & Innovation)</b>, XLRI Jamshedpur</li>
-                        <li><b>MBA (Finance & Marketing)</b>, Xavier Institute of Management (XIMB)</li>
-                        <li><b>B.Tech (Electronics & Telecom)</b>, Utkal University (ITER)</li>
-                    </ul>
-                </div>
-
-                <div class="blue-glass-card p-6 fade-in-section">
-                    <h3 class="font-bold text-white border-b border-blue-300/20 pb-2 mb-3">Research Interests</h3>
-                    <ul class="text-sm text-blue-200 space-y-2">
-                        <li>▶ Entrepreneurial Resourcefulness</li>
-                        <li>▶ Neurodiversity & Dynamic Capabilities</li>
-                        <li>▶ Frugal Innovation, Jugaad, Bricolage</li>
-                        <li>▶ Effectuation & Family Business Dynamics</li>
-                    </ul>
-                </div>
-            </aside>
-
-            <div class="lg:col-span-2 space-y-8">
-                <section id="about" class="blue-glass-card p-8 fade-in-section">
-                    <h2 class="text-2xl font-bold text-white mb-4">About Me</h2>
-                    <div class="space-y-4 text-blue-100 leading-relaxed text-sm">
-                        <p>I hold a Ph.D. from XLRI Jamshedpur, specializing in Entrepreneurship and Innovation. With 17 years of extensive corporate experience, I have held senior strategic roles at leading organizations such as Wipro, Accenture, Cognizant, and Mahindra. Most recently, I served as Global Partnership Head at 42Gears Mobility Pvt Ltd, excelling in building C-suite relationships across Europe, the Middle East, and Africa.</p>
-                        <p>My research explores how businesses creatively leverage limited resources to drive growth and innovation. An advocate for continuous learning, I foster a collaborative and mentoring-oriented approach in both academia and professional spaces.</p>
-                    </div>
-                </section>
-
-                <section id="publications" class="blue-glass-card p-8 fade-in-section">
-                    <h2 class="text-2xl font-bold text-white mb-4">Publications</h2>
-                    <h3 class="font-semibold text-sky-300 mb-2">Book Chapters</h3>
-                    <ul class="space-y-4 mb-6">
-                        <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-92139-1_1" class="block p-3 rounded-lg hover:bg-blue-900/30 transition-colors" target="_blank" rel="noopener noreferrer"><p class="font-semibold text-blue-100">“An Overview of Ethics and the Indian Philosophy”</p><p class="text-sm text-blue-200 mt-1">Applied Ethics and Rationality (Studies in Applied Philosophy, Epistemology and Rational Ethics, Vol. 74)</p></a></li>
-                    </ul>
-                    <h3 class="font-semibold text-sky-300 mb-2">Journal Publications</h3>
-                    <ul class="space-y-4 mb-6">
-                        <li><a href="https://link.springer.com/article/10.1007/s10961-024-10098-2" class="block p-3 rounded-lg hover:bg-blue-900/30 transition-colors" target="_blank" rel="noopener noreferrer"><p class="font-semibold text-blue-100">"Impact of Institutional Pressures and Security on Blockchain Technology Adoption..."</p><p class="text-sm text-blue-200 mt-1">The Journal of Technology Transfer</p></a></li>
-                    </ul>
-                    <h3 class="font-semibold text-sky-300 mb-2">Mainstream Press</h3>
-                    <ul class="space-y-2 text-sm text-blue-200 list-disc list-inside">
-                        <li><b>Quoted in Story:</b> “Depositing Big Cash Sums? Tax Rules, I-T Notices...", Business Standard, July 10, 2025.</li>
-                        <li><b>Quoted in Story:</b> “Why Earning Just Over Rs. 50L Can Be a Net Loss”, GoodReturns, July 8, 2025.</li>
-                        <li><b>Co-authored Article:</b> “Neuroscience of Learning in an AI Era”, BW Education, July 3, 2025.</li>
-                        <li><b>Quoted in a Story:</b> "Who Is Poor?", India Today, July 3, 2025.</li>
-                        <li><b>Quoted in a story:</b> “RBI MPC meeting highlights...”, Business Standard, June 3, 2025.</li>
-                        <li><b>Authored Article:</b> "How Entrepreneurs Are Building a More Secure Digital Future", DataQuest, Feb 10, 2025.</li>
-                    </ul>
-                </section>
-
-                <section id="conferences" class="blue-glass-card p-8 fade-in-section">
-                    <h2 class="text-2xl font-bold text-white mb-4">Conferences & Presentations</h2>
-                    <ul class="space-y-3 text-sm text-blue-200 list-disc list-inside">
-                        <li><b>"Conceptualising Family Business Resourcefulness"</b>, 85th Annual Meeting of the Academy of Management (AOM 2025), Copenhagen, Denmark.</li>
-                        <li><b>"Impact of Family Involvement on Sustainable Innovation"</b>, International Conference on Sustainable Business Management (SBM 2023), IIT Roorkee.</li>
-                        <li><b>"Bibliometrics Analysis of Family Firms Internationalization"</b>, 9th Management Doctoral Colloquium, IIT Kharagpur.</li>
-                        <li><b>"A Study of How Family Involvement Impacts Sustainable Innovation"</b> (Awarded Best Paper), MERC 2023, IIM Kashipur.</li>
-                        <li><b>"Exploring the Innovation Heritage"</b>, POMS India International Conference 2023, XLRI Jamshedpur.</li>
-                        <li><b>"Cultivating Trust... in Family Enterprises"</b>, International Industrial Relations Conference 2024, XLRI Jamshedpur.</li>
-                        <li><b>"Navigating the Maze: Corporate Bribery..."</b>, International Conference on “Enabling Social and Business Responsibility...", XLRI Jamshedpur.</li>
-                        <li><b>"Conceptualizing Family Business Resourcefulness (FBR)..."</b>, Doctoral Colloquium 2024 on Artificial Intelligence and Sustainability, XLRI Jamshedpur.</li>
-                    </ul>
-                </section>
-
-                <section id="teaching" class="blue-glass-card p-8 fade-in-section">
-                    <h2 class="text-2xl font-bold text-white mb-4">Teaching & Professional Development</h2>
-                    <h3 class="font-semibold text-sky-300 mb-2">Management Development Programs (MDPs)</h3>
-                    <ul class="space-y-3 text-sm text-blue-200 list-disc list-inside mb-6">
-                        <li>Co-conducted MDP for 75 Indian Revenue Service officers at the National Academy of Direct Taxes (NADT), Delhi.</li>
-                        <li>Programs in Strategy Formulation, Implementation, Team Building, Change Management, and Organizational Alignment.</li>
-                    </ul>
-                    <h3 class="font-semibold text-sky-300 mb-2">Course Sessions</h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                        <a href="Session1_What is Strategy.html" class="block p-4 bg-blue-900/20 text-center rounded-lg hover:bg-blue-900/40 transition-colors border border-transparent hover:border-sky-400"><h3 class="font-semibold text-sm text-blue-100">What is Strategy?</h3></a>
-                        <a href="Session2_Disruption of the Auto Industry.html" class="block p-4 bg-blue-900/20 text-center rounded-lg hover:bg-blue-900/40 transition-colors border border-transparent hover:border-sky-400"><h3 class="font-semibold text-sm text-blue-100">Auto Industry Disruption</h3></a>
-                        <a href="Session3_Purpose_Values_Strategy.html" class="block p-4 bg-blue-900/20 text-center rounded-lg hover:bg-blue-900/40 transition-colors border border-transparent hover:border-sky-400"><h3 class="font-semibold text-sm text-blue-100">Purpose & Values</h3></a>
-                        <a href="Session4_5forcesV1.html" class="block p-4 bg-blue-900/20 text-center rounded-lg hover:bg-blue-900/40 transition-colors border border-transparent hover:border-sky-400"><h3 class="font-semibold text-sm text-blue-100">Porter's 5 Forces</h3></a>
-                        <a href="Internal Analysis_Session6_v1.html" class="block p-4 bg-blue-900/20 text-center rounded-lg hover:bg-blue-900/40 transition-colors border border-transparent hover:border-sky-400"><h3 class="font-semibold text-sm text-blue-100">Internal Analysis</h3></a>
-                        <a href="Internal Analysis_Session6_v1.html" class="block p-4 bg-blue-900/20 text-center rounded-lg hover:bg-blue-900/40 transition-colors border border-transparent hover:border-sky-400"><h3 class="font-semibold text-sm text-blue-100">Internal Analysis</h3></a>
-
-                    </div>
-                </section>
+            <div id="message-container">
+                <div class="chat-message bot">Hello! How can I help you today?</div>
             </div>
+            <form id="chat-input-form">
+                <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off" required>
+            </form>
         </div>
-    </main>
 
-    <footer class="text-center py-10 mt-8">
-        <div class="flex items-center justify-center space-x-4 mb-4">
-            <a href="https://x.com/swapnilsahoo" target="_blank" rel="noopener noreferrer" aria-label="X Profile"><svg class="social-icon" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
-            <a href="https://www.instagram.com/swapnilsahoo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile"><svg class="social-icon" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8s.01 2.444.048 3.297c.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.297-.048c.852-.04 1.433-.174 1.942-.372.526-.205.972-.478 1.417-.923.445-.444.718-.891.923-1.417.198-.51.333-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.444-.048-3.297c-.04-.852-.174-1.433-.372-1.942a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.09-.333-1.942-.372C10.445.01 10.173 0 8 0zm0 1.442c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.282.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.598.92c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.389-.009-3.232-.047c-.78-.036-1.203-.166-1.485-.276a2.47 2.47 0 0 1-.92-.598 2.47 2.47 0 0 1-.598-.92c-.11-.28-.24-.705-.276-1.485C1.44 10.389 1.442 10.136 1.442 8s.002-2.389.047-3.232c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.843-.038 1.096-.047 3.232-.047zM8 3.882a4.108 4.108 0 1 0 0 8.216 4.108 4.108 0 0 0 0-8.216zm0 6.772A2.664 2.664 0 1 1 8 5.328a2.664 2.664 0 0 1 0 5.328zm4.965-6.402a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92z"/></svg></a>
-            <a href="https://www.linkedin.com/in/swapnilsahoo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><svg class="social-icon" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.482-.635 1.482-1.414s-.645-1.414-1.482-1.414S2.54 3.1 2.54 3.882s.645 1.414 1.203 1.414zm7.258 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.873h2.443V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg></a>
-        </div>
-        <p class="text-sm text-blue-300/50">© Dr. Swapnil Sahoo 2025. All Rights Reserved.</p>
-    </footer>
+        <button id="chat-toggle-button" class="blue-glass-card" aria-label="Toggle Chat">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+        </button>
+    </div>
+
 
     <script defer>
+        // --- Section fade-in animation script (no changes) ---
         const sections = document.querySelectorAll('.fade-in-section');
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
@@ -209,11 +111,87 @@
             });
         }, { threshold: 0.1 });
         sections.forEach(section => { observer.observe(section); });
+
+        // --- NEW: Chatbot JavaScript Logic ---
+
+        // 1. Get references to all the chat UI elements
+        const chatToggleButton = document.getElementById('chat-toggle-button');
+        const chatWindow = document.getElementById('chat-window');
+        const messageContainer = document.getElementById('message-container');
+        const chatInputForm = document.getElementById('chat-input-form');
+        const chatInput = document.getElementById('chat-input');
+        
+        // 2. The API endpoint for your Hugging Face space
+        const API_URL = "https://swapnilsahoo118514-personal.hf.space/run/predict";
+
+        // 3. Toggle chat window visibility when the button is clicked
+        chatToggleButton.addEventListener('click', () => {
+            chatWindow.classList.toggle('visible');
+        });
+
+        // 4. Handle form submission (when user sends a message)
+        chatInputForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the form from reloading the page
+            const userMessage = chatInput.value.trim();
+            if (userMessage) {
+                // Add user's message to the UI
+                addMessageToUI(userMessage, 'user');
+                // Clear the input field
+                chatInput.value = '';
+                // Send the message to the API and get a response
+                sendMessageToAPI(userMessage);
+            }
+        });
+
+        // 5. Function to add a message to the chat window
+        function addMessageToUI(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message', sender);
+            messageElement.textContent = message;
+            messageContainer.appendChild(messageElement);
+            // Scroll to the latest message
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+        
+        // 6. Function to send a message to the Gradio API
+        async function sendMessageToAPI(message) {
+            // Add a "typing..." indicator for better UX
+            const typingIndicator = document.createElement('div');
+            typingIndicator.classList.add('chat-message', 'bot', 'typing');
+            typingIndicator.textContent = 'Typing...';
+            messageContainer.appendChild(typingIndicator);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    // The data payload must match what Gradio expects
+                    body: JSON.stringify({
+                        data: [message]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                // Remove the "typing..." indicator
+                messageContainer.removeChild(typingIndicator);
+
+                // The bot's reply is in the 'data' array of the response
+                const botMessage = result.data[0];
+                addMessageToUI(botMessage, 'bot');
+
+            } catch (error) {
+                // Handle any errors
+                messageContainer.removeChild(typingIndicator);
+                addMessageToUI('Sorry, something went wrong. Please try again.', 'bot');
+                console.error("Error fetching from Gradio API:", error);
+            }
+        }
     </script>
 </body>
 </html>
-```
-
-
-
-
