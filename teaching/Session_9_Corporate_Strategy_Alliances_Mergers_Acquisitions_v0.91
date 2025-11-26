@@ -371,6 +371,94 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- New "David vs Goliath" Block -->
+                <div class="mt-10 bg-slate-50 rounded-xl p-6 border border-indigo-100 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <i class="fas fa-car-side text-9xl text-indigo-900"></i>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">🚗 David vs. Goliath: How Lyft Outmaneuvered Uber</h3>
+                    
+                    <div class="prose prose-slate max-w-none text-slate-600 mb-6">
+                        <p>In 2019, Uber was the untouchable global giant ($82B valuation). Yet, Lyft, focused only on North America, beat them to IPO with a $26B valuation. <strong>How?</strong> Instead of matching scale, Lyft used alliances.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <!-- GM Card -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500">
+                            <h4 class="font-bold text-blue-700 mb-2">🔹 2016: General Motors</h4>
+                            <ul class="text-sm text-slate-600 list-disc pl-4 space-y-1">
+                                <li>$500M equity investment.</li>
+                                <li>Access to fleet management expertise.</li>
+                                <li>Entry point for GM into MaaS (Mobility-as-a-Service).</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Waymo Card -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-teal-500">
+                            <h4 class="font-bold text-teal-700 mb-2">🔹 2017: Waymo Alliance</h4>
+                            <ul class="text-sm text-slate-600 list-disc pl-4 space-y-1">
+                                <li>Autonomous tech from Alphabet (Google).</li>
+                                <li>Formed during Waymo vs. Uber IP battle.</li>
+                                <li>Critical for lowering long-term ride costs.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-indigo-900 text-white p-5 rounded-lg shadow-md">
+                        <h4 class="font-bold text-yellow-400 mb-2"><i class="fas fa-lightbulb mr-2"></i>Lesson for Entrepreneurs</h4>
+                        <p class="text-sm opacity-90">Even if you start smaller, the right alliances can help you punch above your weight and seize market moments before your rivals.</p>
+                    </div>
+                    
+                    <!-- Post IPO Comparison -->
+                    <div class="mt-6 pt-6 border-t border-slate-200">
+                        <h4 class="font-bold text-slate-800 mb-3">The Long Run: Focus vs. Diversification</h4>
+                        <div class="flex flex-col sm:flex-row gap-4 text-sm">
+                            <div class="flex-1 bg-red-50 p-3 rounded border border-red-100">
+                                <span class="block font-bold text-red-800 mb-1">Lyft (The Specialist)</span>
+                                Stayed focused on North America ride-hailing. Still unprofitable in 2021 ($1B loss).
+                            </div>
+                            <div class="flex-1 bg-gray-800 text-white p-3 rounded border border-gray-700">
+                                <span class="block font-bold text-gray-200 mb-1">Uber (The Ecosystem)</span>
+                                Diversified into Eats & Freight. "Uber Eats" now >50% of revenue. Smaller loss ($500M).
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-3 italic">What do you think — in the long run, will Lyft’s focused strategy beat Uber’s diversification play?</p>
+                    </div>
+
+                    <!-- Financial Trajectory Graphs -->
+                    <div class="mt-8 border-t border-indigo-100 pt-6">
+                        <h4 class="font-bold text-slate-900 mb-4 text-lg">Financial Trajectory: Revenue & Profitability (2016–2024)</h4>
+                        <p class="text-sm text-slate-600 mb-6">From their respective inceptions, Uber has consistently generated significantly higher revenue than Lyft. While both companies incurred substantial losses for many years as they prioritized market share, Uber's larger, diversified business (including Uber Eats and Freight) enabled it to achieve net profitability sooner and on a much larger scale.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                                <h5 class="font-semibold text-center mb-2 text-sm">Annual Revenue (Billions USD)</h5>
+                                <div class="chart-container" style="height: 250px;">
+                                    <canvas id="uberLyftRevChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                                <h5 class="font-semibold text-center mb-2 text-sm">Net Income (Billions USD)</h5>
+                                <div class="chart-container" style="height: 250px;">
+                                    <canvas id="uberLyftProfitChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-100 p-5 rounded-lg border-l-4 border-indigo-500">
+                            <h5 class="font-bold text-slate-800 mb-2">Strategic Analysis</h5>
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li><strong>Revenue Growth:</strong> Both Uber and Lyft have seen significant revenue growth over time, with Uber consistently maintaining a much higher revenue base. Uber's revenue was minimally impacted during the pandemic due to the rise of its delivery services, whereas Lyft, a primarily ride-hailing company, saw a steeper dip.</li>
+                                <li><strong>Profitability Challenges:</strong> For most of their histories, both companies were heavily unprofitable, posting significant net losses each year while focusing on growth and market dominance.</li>
+                                <li><strong>Path to Profitability:</strong> Uber achieved consistent annual profitability in 2023 and 2024, reporting a net income of $9.86 billion in 2024. Lyft followed a similar trend, reporting its first annual net profit in 2024, albeit on a much smaller scale, at $22.8 million.</li>
+                                <li><strong>Strategic Differences:</strong> Uber's success is attributed to its strategic diversification into food delivery (Uber Eats), which became critical during the pandemic and has since contributed significantly to overall revenue and profitability. Lyft's focus on ride-hailing has limited its ability to compete on the same financial scale.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                  <!-- POST-SCRIPT: THE REALITY CHECK -->
                 <div class="mt-10 pt-10 border-t border-slate-200">
                     <h3 class="text-lg font-bold text-slate-800 mb-3">Ride-Sharing Reality Check (2022)</h3>
@@ -1011,32 +1099,53 @@
                 
                 <div class="grid md:grid-cols-3 gap-6">
                     <!-- Benefit 1 -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-blue-100">
                         <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl mb-4"><i class="fas fa-compress-arrows-alt"></i></div>
-                        <h4 class="font-bold text-slate-800 mb-2">Reduce Competition</h4>
-                        <p class="text-sm text-slate-600">Excess capacity is taken out of the market. Surviving firms gain market power.</p>
-                        <div class="mt-3 text-xs bg-slate-50 p-2 rounded border border-slate-100">
-                            <strong>Example:</strong> US Airline Industry (Delta/Northwest, United/Continental) consolidated to stabilize prices.
+                        <h4 class="font-bold text-slate-800 mb-2">Reduce Competition & Increase Power</h4>
+                        <p class="text-sm text-slate-600 mb-4">Eliminating rivals increases market share and pricing power by consolidating the industry.</p>
+                        <div class="space-y-2 text-xs">
+                            <div class="bg-blue-50 p-2 rounded border-l-2 border-blue-400">
+                                <span class="font-bold block text-blue-800">Global: US Airlines</span>
+                                Delta/Northwest & United/Continental mergers consolidated a fragmented market to stabilize prices.
+                            </div>
+                            <div class="bg-indigo-50 p-2 rounded border-l-2 border-indigo-400">
+                                <span class="font-bold block text-indigo-800">India: Vodafone Idea</span>
+                                Merged to consolidate subscriber bases and spectrum to survive competition from Jio.
+                            </div>
                         </div>
                     </div>
                     
                     <!-- Benefit 2 -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-green-100">
                         <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl mb-4"><i class="fas fa-piggy-bank"></i></div>
-                        <h4 class="font-bold text-slate-800 mb-2">Lower Costs</h4>
-                        <p class="text-sm text-slate-600">Achieving economies of scale is critical in industries with high fixed costs (like Pharma).</p>
-                        <div class="mt-3 text-xs bg-slate-50 p-2 rounded border border-slate-100">
-                            <strong>Example:</strong> Pfizer & Wyeth. Combined drug portfolios allowed for a single, smaller sales force.
+                        <h4 class="font-bold text-slate-800 mb-2">Lower Costs & Economies of Scale</h4>
+                        <p class="text-sm text-slate-600 mb-4">Critical for industries with high fixed costs. Merging allows spreading costs over a larger base.</p>
+                        <div class="space-y-2 text-xs">
+                            <div class="bg-green-50 p-2 rounded border-l-2 border-green-400">
+                                <span class="font-bold block text-green-800">Global: P&G + Gillette</span>
+                                $57B deal. Massive R&D and marketing cost synergies for consumer goods.
+                            </div>
+                            <div class="bg-teal-50 p-2 rounded border-l-2 border-teal-400">
+                                <span class="font-bold block text-teal-800">India: ACC & Damodar</span>
+                                ACC acquired Damodar Cement to improve productivity and scale in Eastern India.
+                            </div>
                         </div>
                     </div>
 
                     <!-- Benefit 3 -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-purple-100">
                         <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xl mb-4"><i class="fas fa-magic"></i></div>
                         <h4 class="font-bold text-slate-800 mb-2">Increase Differentiation</h4>
-                        <p class="text-sm text-slate-600">Filling gaps in product offerings to provide a complete suite of services.</p>
-                        <div class="mt-3 text-xs bg-slate-50 p-2 rounded border border-slate-100">
-                            <strong>Example:</strong> Disney bought Marvel ($4B). Marvel superheroes differentiated Disney's parks and merchandise.
+                        <p class="text-sm text-slate-600 mb-4">Filling product gaps to offer a complete suite of services, enhancing competitive position.</p>
+                        <div class="space-y-2 text-xs">
+                            <div class="bg-purple-50 p-2 rounded border-l-2 border-purple-400">
+                                <span class="font-bold block text-purple-800">Global: Disney + Marvel</span>
+                                $4B acquisition added superheroes to Disney's parks/merch ecosystem.
+                            </div>
+                            <div class="bg-pink-50 p-2 rounded border-l-2 border-pink-400">
+                                <span class="font-bold block text-pink-800">India: Flipkart + Myntra</span>
+                                Allowed Flipkart to instantly dominate online fashion, differentiating beyond electronics.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1245,7 +1354,7 @@
                     <h3 class="text-xl font-bold text-slate-800 mb-6 text-center z-10">The Internal Growth Engine</h3>
                     <p class="text-sm text-slate-500 mb-6 text-center z-10">Linking Resources & Capabilities</p>
                     <div class="image-container max-w-full max-h-[60vh] z-10 bg-white p-2">
-                        <img src="Core_Competencies_Resources_Capabilities.jpg" alt="Linking Core Competencies, Resources, Capabilities, and Activities to Competitive Advantage" class="w-full h-full object-contain rounded">
+                        <img src="image_e8f787.png" alt="Linking Core Competencies, Resources, Capabilities, and Activities to Competitive Advantage" class="w-full h-full object-contain rounded">
                     </div>
                 </div>
             </div>
@@ -1264,7 +1373,7 @@
                  </div>
                 <div class="flex-1 p-8 overflow-auto flex items-center justify-center">
                     <div class="image-container max-w-full max-h-full bg-white p-2 shadow-lg">
-                        <img src="Build_Borrow_Buy.jpg" alt="The Build-Borrow-Buy Framework Diagram showing decision tree" class="w-full h-full object-contain rounded">
+                        <img src="Build Borrow & Buy.jpg" alt="The Build-Borrow-Buy Framework Diagram showing decision tree" class="w-full h-full object-contain rounded">
                     </div>
                 </div>
             </div>
@@ -1503,6 +1612,32 @@
             }
         }
 
+        function resetQuiz() {
+            renderQuiz();
+            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Scroll Spy Logic
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('main section[id]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 180) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+
         // ----------------------------------------------------
         // QUIZ LOGIC
         // ----------------------------------------------------
@@ -1678,35 +1813,84 @@
             feedbackDiv.classList.add(selectedIndex === correctIndex ? 'text-green-800' : 'text-red-800');
         }
 
-        function resetQuiz() {
-            renderQuiz();
-            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Scroll Spy Logic
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('main section[id]');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 180) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active-nav');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active-nav');
-                }
-            });
-        });
-
         // Initialize Everything on Load
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize Charts if they exist
+            const lyftRevCanvas = document.getElementById('uberLyftRevChart');
+            if (lyftRevCanvas) {
+                const ctxLyftRev = lyftRevCanvas.getContext('2d');
+                new Chart(ctxLyftRev, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                        datasets: [
+                            {
+                                label: 'Uber',
+                                data: [3.8, 7.9, 11.3, 14.1, 11.1, 17.5, 31.8, 37.2, 40.0],
+                                backgroundColor: 'rgba(30, 41, 59, 0.8)',
+                                borderRadius: 4
+                            },
+                            {
+                                label: 'Lyft',
+                                data: [0.3, 1.0, 2.1, 3.6, 2.3, 3.2, 4.1, 4.4, 5.0],
+                                backgroundColor: 'rgba(236, 72, 153, 0.8)',
+                                borderRadius: 4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        },
+                        scales: {
+                            y: { beginAtZero: true, title: { display: true, text: 'Billions ($)' } }
+                        }
+                    }
+                });
+            }
+
+            const lyftProfitCanvas = document.getElementById('uberLyftProfitChart');
+            if (lyftProfitCanvas) {
+                const ctxLyftProfit = lyftProfitCanvas.getContext('2d');
+                new Chart(ctxLyftProfit, {
+                    type: 'line',
+                    data: {
+                        labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                        datasets: [
+                            {
+                                label: 'Uber',
+                                data: [-2.8, -4.0, -1.8, -8.5, -6.7, -0.4, -9.1, 1.1, 9.86],
+                                borderColor: 'rgba(30, 41, 59, 1)',
+                                backgroundColor: 'rgba(30, 41, 59, 0.1)',
+                                tension: 0.3,
+                                fill: false
+                            },
+                            {
+                                label: 'Lyft',
+                                data: [-0.6, -0.6, -0.9, -2.6, -1.7, -1.0, -1.6, -0.3, 0.023],
+                                borderColor: 'rgba(236, 72, 153, 1)',
+                                backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                                tension: 0.3,
+                                fill: false
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        },
+                        scales: {
+                            y: { title: { display: true, text: 'Net Income ($B)' } }
+                        }
+                    }
+                });
+            }
+
+            // Initialize Lyft Pre/Post IPO Chart (Small one)
             const lyftCanvas = document.getElementById('lyftUberChart');
             if (lyftCanvas) {
                 const ctxLyft = lyftCanvas.getContext('2d');
@@ -1763,4 +1947,3 @@
     </script>
 </body>
 </html>
-
