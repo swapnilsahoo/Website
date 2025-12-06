@@ -94,6 +94,32 @@
             display: flex; flex-direction: column; justify-content: center;
         }
 
+        /* Presentation Slide Styling */
+        .lecture-slide {
+            aspect-ratio: 16/9;
+            background: #1e293b; /* Slate 800 */
+            color: white;
+            border-radius: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            border: 4px solid #334155;
+            position: relative;
+            overflow: hidden;
+        }
+        .lecture-script {
+            font-family: 'Merriweather', serif;
+            color: #475569;
+            font-style: italic;
+            border-left: 3px solid #cbd5e1;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
         /* Chess Icon Container */
         .chess-logo {
             width: 40px; height: 40px;
@@ -130,6 +156,29 @@
         .innovation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         .innovation-cell { border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 0.75rem; transition: all 0.2s; }
         .innovation-cell:hover { transform: translateY(-3px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+
+        /* The 4 I's Interactive Styles */
+        .process-card {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .process-card.active {
+            border-color: var(--accent-blue);
+            background-color: #eff6ff; /* blue-50 */
+            transform: scale(1.02);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="text-slate-800">
@@ -162,10 +211,12 @@
             
             <div class="hidden xl:flex space-x-6 text-sm">
                 <a href="#intro" class="nav-link active">The Case</a>
+                <a href="#gale" class="nav-link font-bold text-indigo-600">The Gale</a>
+                <a href="#speed" class="nav-link">Speed</a>
                 <a href="#process" class="nav-link">The Process</a>
                 <a href="#lifecycle" class="nav-link">Lifecycle</a>
+                <a href="#strategy-shift" class="nav-link">Strategy Shift</a>
                 <a href="#chasm" class="nav-link">The Chasm</a>
-                <a href="#second-wind" class="nav-link">Second Wind</a>
                 <a href="#types" class="nav-link">Types</a>
                 <a href="#platforms" class="nav-link">Platforms</a>
                 <a href="#simulation" class="nav-link text-indigo-600 font-bold">🚀 CEO Sim</a>
@@ -251,7 +302,7 @@
                 <div class="bg-red-50 border-l-8 border-red-600 p-8 rounded-r-2xl text-left mb-12 shadow-sm">
                     <p class="text-sm font-bold text-red-600 uppercase tracking-widest mb-2">Fundamental Question</p>
                     <h1 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-4">
-                        Why does a secret recipe (Coca-Cola) last 100 years, while a dominant tech giant (Blockbuster) vanishes in 10?
+                        How could a highly profitable, dominant company like Blockbuster be virtually wiped out by a startup like Netflix, which started with a less profitable business model (mailing DVDs), in less than a decade?
                     </h1>
                     <p class="text-lg text-slate-700 leading-relaxed">
                         Innovation is the "perennial gale of creative destruction." While Coca-Cola protects its trade secret to sustain advantage, tech firms like Netflix must innovate continuously—moving from DVDs to Streaming to Content—because patent disclosure would reveal their algorithms.
@@ -337,59 +388,395 @@
             </div>
         </section>
 
-        <!-- SECTION 1: THE INNOVATION PROCESS -->
+        <!-- MEDIA EVOLUTION: CREATIVE DESTRUCTION -->
+        <section id="media-evolution" class="mb-32 fade-up">
+            <div class="fp-box">
+                <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-1">Context</p>
+                <h3 class="text-2xl font-serif font-bold text-slate-800">The Perennial Gale of Creative Destruction</h3>
+                <p class="text-slate-600 mt-2">
+                    Schumpeter's theory in action: How superior formats ruthlessly replace the old. The journey from grainy tapes to 4K streams is a perfect case study.
+                </p>
+            </div>
+
+            <div class="content-card p-8 border-l-4 border-red-600">
+                <h3 class="text-xl font-bold text-slate-900 mb-6">The Evolution of Home Video</h3>
+                <div class="space-y-8 relative">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-6 top-4 bottom-4 w-0.5 bg-slate-200"></div>
+
+                    <!-- Step 1: VHS -->
+                    <div class="relative pl-16">
+                        <div class="absolute left-0 w-12 h-12 bg-slate-100 rounded-full border-4 border-white shadow-sm flex items-center justify-center text-slate-500 font-bold z-10">80s</div>
+                        <h4 class="text-lg font-bold text-slate-800">VHS (Video Home System)</h4>
+                        <p class="text-sm text-slate-600 mt-1">
+                            An analog magnetic tape format. It dominated the 1980s and 90s despite low resolution. It was the era of "Be Kind, Rewind."
+                        </p>
+                    </div>
+
+                    <!-- Step 2: DVD -->
+                    <div class="relative pl-16">
+                        <div class="absolute left-0 w-12 h-12 bg-blue-100 rounded-full border-4 border-white shadow-sm flex items-center justify-center text-blue-600 font-bold z-10">00s</div>
+                        <h4 class="text-lg font-bold text-slate-800">DVD (Digital Versatile Disc)</h4>
+                        <p class="text-sm text-slate-600 mt-1">
+                            A digital optical disc format. It offered better picture quality, sound, and convenience (no rewinding!). It largely replaced VHS in the early 2000s.
+                        </p>
+                    </div>
+
+                    <!-- Step 3: Blu-ray -->
+                    <div class="relative pl-16">
+                        <div class="absolute left-0 w-12 h-12 bg-indigo-100 rounded-full border-4 border-white shadow-sm flex items-center justify-center text-indigo-600 font-bold z-10">10s</div>
+                        <h4 class="text-lg font-bold text-slate-800">Blu-ray & Ultra HD</h4>
+                        <p class="text-sm text-slate-600 mt-1">
+                            Uses a blue-violet laser for High Definition (1080p). Emerged after a format war with HD DVD. Later evolved to <strong>Ultra HD Blu-ray</strong> supporting 4K resolution (3840 x 2160 pixels) and HDR for home theater enthusiasts.
+                        </p>
+                    </div>
+
+                    <!-- Step 4: Streaming -->
+                    <div class="relative pl-16">
+                        <div class="absolute left-0 w-12 h-12 bg-red-100 rounded-full border-4 border-white shadow-sm flex items-center justify-center text-red-600 font-bold z-10">Now</div>
+                        <h4 class="text-lg font-bold text-red-600">The Dominant Format: Streaming</h4>
+                        <p class="text-sm text-slate-600 mt-1">
+                            While physical media (Blu-ray) still offers superior technical quality (bitrate), the market has shifted to <strong>Streaming Services</strong> (Netflix, Amazon Prime, Hulu).
+                        </p>
+                        <div class="mt-3 bg-red-50 p-3 rounded text-xs text-red-800 font-medium border border-red-100">
+                            <strong>Why?</strong> Convenience and on-demand access to a vast library without the need for physical storage space displaced the need for discs.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LECTURE: THE PERENNIAL GALE (NEW SECTION) -->
+        <section id="gale" class="mb-32 fade-up">
+            <div class="mb-8">
+                <span class="bg-indigo-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Masterclass Lecture</span>
+                <h2 class="text-3xl font-serif font-bold text-slate-900 mt-3">The "Perennial Gale" Explained</h2>
+            </div>
+
+            <!-- Slide 1: Introduction -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16 items-center">
+                <div class="lecture-slide bg-gradient-to-br from-slate-900 to-indigo-900">
+                    <div class="text-center">
+                        <i class="fas fa-wind text-5xl text-blue-400 mb-4 animate-pulse"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">The Perennial Gale</h3>
+                        <p class="text-indigo-200 italic font-serif">"Stabilized capitalism is a contradiction in terms."</p>
+                        <p class="text-xs text-slate-400 mt-4 uppercase tracking-widest">- Joseph Schumpeter</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-indigo-50 border-l-4 border-indigo-600 p-4 mb-4">
+                        <p class="text-sm font-bold text-indigo-900">Fundamental Question</p>
+                        <p class="text-sm text-slate-700">If the pace of innovation is accelerating dramatically, how can any firm achieve a <em>sustainable</em> competitive advantage?</p>
+                    </div>
+                    <div class="lecture-script">
+                        <p>"When you think of success, you think of stability. But Schumpeter saw capitalism as a churning ocean. He called the force driving it the 'Perennial Gale of Creative Destruction.' It’s not just competition; it’s industrial mutation that incessantly revolutionizes the economic structure from within, incessantly destroying the old one, incessantly creating a new one."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Core Concept (Visuals) -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16 items-center">
+                <div class="lecture-slide">
+                    <div class="flex items-center justify-around w-full">
+                        <div class="text-center opacity-50">
+                            <i class="fas fa-tv text-4xl text-red-500 mb-2"></i>
+                            <div class="text-xs uppercase font-bold text-red-500">Destruction</div>
+                            <div class="text-[10px] text-slate-400">VCR / Old Tech</div>
+                        </div>
+                        <i class="fas fa-arrow-right text-2xl text-white"></i>
+                        <div class="text-center">
+                            <i class="fas fa-mobile-alt text-4xl text-green-400 mb-2"></i>
+                            <div class="text-xs uppercase font-bold text-green-400">Creation</div>
+                            <div class="text-[10px] text-slate-400">Smartphone / New Tech</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+                        <p class="text-sm font-bold text-red-900">Trigger Question</p>
+                        <p class="text-sm text-slate-700">How can the <strong>destruction</strong> of an entire industry possibly be good for an overall economy?</p>
+                    </div>
+                    <div class="lecture-script">
+                        <p>"Schumpeter argued you can't have progress without tearing down the old. The VCR industry didn't just adapt; it vanished. That is the 'destruction.' But that destruction freed up capital and labor to build the smartphone ecosystem—the 'creation.' It is a transfer of resources from low productivity to high productivity."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Blockbuster vs Netflix -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16 items-center">
+                <div class="lecture-slide relative">
+                    <div class="absolute inset-0 bg-black/60 z-0"></div>
+                    <div class="relative z-10 grid grid-cols-2 gap-4 w-full h-full">
+                        <div class="bg-blue-900/50 flex flex-col items-center justify-center border border-blue-500 rounded p-2">
+                            <div class="text-xl font-bold text-blue-300">BLOCKBUSTER</div>
+                            <div class="text-[10px] text-slate-300 mt-2">Asset: 9,000 Stores</div>
+                            <div class="text-[10px] text-red-400 font-bold">Became Liability</div>
+                        </div>
+                        <div class="bg-red-900/50 flex flex-col items-center justify-center border border-red-500 rounded p-2">
+                            <div class="text-xl font-bold text-red-500">NETFLIX</div>
+                            <div class="text-[10px] text-slate-300 mt-2">Asset: Algorithm</div>
+                            <div class="text-[10px] text-green-400 font-bold">Created Value</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <p class="text-sm font-bold text-blue-900">Trigger Question</p>
+                        <p class="text-sm text-slate-700">How could a highly profitable giant like Blockbuster be wiped out by a startup with a seemingly <em>less</em> efficient model (mailing DVDs)?</p>
+                    </div>
+                    <div class="lecture-script">
+                        <p>"Blockbuster was optimized for equilibrium (late fees, physical stores). Netflix introduced a model that addressed pain points. When the internet speed 'Gale' arrived, Blockbuster's biggest assets (stores) became massive liabilities. They couldn't pivot because their entire revenue model depended on the old way."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Indian Context -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16 items-center">
+                <div class="lecture-slide bg-amber-900">
+                    <div class="text-center w-full">
+                        <div class="flex justify-between items-center mb-6 px-8">
+                            <div class="opacity-40"><i class="fas fa-phone-volume text-4xl"></i><br><span class="text-xs">PCO Booth</span></div>
+                            <i class="fas fa-long-arrow-alt-right text-2xl text-amber-400"></i>
+                            <div><i class="fas fa-signal text-4xl text-amber-400"></i><br><span class="text-xs font-bold text-amber-400">Jio / 5G</span></div>
+                        </div>
+                        <div class="text-sm font-bold text-amber-100 border-t border-amber-700 pt-4">
+                            "The PCO didn't evolve. It evaporated."
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-4">
+                        <p class="text-sm font-bold text-amber-900">Indian Context</p>
+                        <p class="text-sm text-slate-700">The PCO was a robust micro-business across India. Why did it vanish almost overnight?</p>
+                    </div>
+                    <div class="lecture-script">
+                        <p>"The 'creation' of affordable connectivity by players like Jio made the time-metered public phone obsolete. This wasn't a gentle sunset. It was a violent shift of capital from millions of small booths to massive 4G infrastructure. Similarly, Kirana stores now face the 'Gale' of E-commerce. They must adapt (digitize) or risk the same fate."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Conclusion -->
+            <div class="bg-slate-900 text-white p-8 rounded-xl text-center shadow-2xl">
+                <i class="fas fa-ship text-4xl text-blue-400 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Conclusion: Surviving the Storm</h3>
+                <p class="text-slate-400 max-w-2xl mx-auto mb-6">
+                    "The gale is perennial. It never stops blowing. As future business leaders, your success won't depend on how well you manage a stable ship, but on how effectively you navigate the constant storm of change. <strong>Be the disruptor, not the disrupted.</strong>"
+                </p>
+            </div>
+        </section>
+
+        <!-- SPEED OF INNOVATION -->
+        <section id="speed" class="mb-32 fade-up">
+            <div class="fp-box">
+                <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-1">Context</p>
+                <h3 class="text-2xl font-serif font-bold text-slate-800">The Accelerating Speed of Innovation</h3>
+                <p class="text-slate-600 mt-2">
+                    Change is the only constant. The rate of technological change has accelerated dramatically. It took 84 years for the car to reach 50% U.S. adoption, but only 6 years for MP3 players.
+                </p>
+            </div>
+
+            <div class="content-card p-8">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Visualization -->
+                    <div class="w-full">
+                        <h4 class="font-bold text-slate-800 mb-4 text-center text-sm uppercase">Years to Reach 50% U.S. Adoption</h4>
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="speedChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Analysis -->
+                    <div class="flex flex-col justify-center space-y-6">
+                        <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+                            <h4 class="font-bold text-indigo-900 mb-2">Why is it accelerating?</h4>
+                            <ul class="text-sm text-indigo-800 space-y-3">
+                                <li class="flex gap-2">
+                                    <i class="fas fa-layer-group mt-1"></i>
+                                    <span><strong>Infrastructure Layering:</strong> Earlier innovations (Electricity, Telephone) built the rails for new ones (Internet, AI) to run on.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <i class="fas fa-shipping-fast mt-1"></i>
+                                    <span><strong>New Business Models:</strong> Dell's direct-to-consumer and Walmart's IT logistics fueled explosive growth, making innovations accessible faster.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <i class="fas fa-share-alt mt-1"></i>
+                                    <span><strong>Viral Networks:</strong> Social media and the internet allow information (and adoption) to spread instantly compared to word-of-mouth.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: THE INNOVATION PROCESS (INTERACTIVE) -->
         <section id="process" class="mb-32 fade-up">
             <div class="fp-box">
-                <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-1">Fundamental Question</p>
+                <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-1">First Principle Question</p>
                 <h3 class="text-2xl font-serif font-bold text-slate-800">Is a great idea alone enough to succeed?</h3>
                 <p class="text-slate-600 mt-2">No. Innovation is the <strong>commercialization</strong> of invention. Google's PageRank is an invention; Google Ads is the innovation that monetized it.</p>
             </div>
 
             <!-- The 4 I's Deep Dive -->
             <div class="content-card p-8 mb-12 border-t-4 border-indigo-500">
-                <h3 class="text-xl font-bold text-slate-900 mb-6">The 4 I's of Innovation Process</h3>
-                <div class="grid md:grid-cols-4 gap-4 text-center">
-                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                <h3 class="text-xl font-bold text-slate-900 mb-6 text-center">The 4 I's of Innovation Process (Click to Explore)</h3>
+                
+                <!-- Interactive Grid -->
+                <div class="grid md:grid-cols-4 gap-4 text-center mb-8">
+                    <!-- Idea -->
+                    <div class="process-card p-4 bg-slate-50 rounded-xl border border-slate-200" onclick="showProcess('idea', this)">
                         <div class="w-12 h-12 mx-auto bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl mb-3"><i class="fas fa-lightbulb"></i></div>
                         <h4 class="font-bold text-slate-900">1. Idea</h4>
-                        <p class="text-xs text-slate-600 mt-2">Abstract concepts. Basic Research.</p>
+                        <p class="text-xs text-slate-600 mt-2">Abstract Concepts</p>
                     </div>
-                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <!-- Invention -->
+                    <div class="process-card p-4 bg-slate-50 rounded-xl border border-slate-200" onclick="showProcess('invention', this)">
                         <div class="w-12 h-12 mx-auto bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xl mb-3"><i class="fas fa-flask"></i></div>
                         <h4 class="font-bold text-slate-900">2. Invention</h4>
-                        <p class="text-xs text-slate-600 mt-2">Transformation into product/process (Patents).</p>
+                        <p class="text-xs text-slate-600 mt-2">Transformation</p>
                     </div>
-                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 ring-2 ring-indigo-500">
+                    <!-- Innovation -->
+                    <div class="process-card p-4 bg-slate-50 rounded-xl border border-slate-200" onclick="showProcess('innovation', this)">
                         <div class="w-12 h-12 mx-auto bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xl mb-3"><i class="fas fa-rocket"></i></div>
                         <h4 class="font-bold text-slate-900">3. Innovation</h4>
-                        <p class="text-xs text-slate-600 mt-2">Commercialization. Value capture. First Mover Advantages.</p>
+                        <p class="text-xs text-slate-600 mt-2">Commercialization</p>
                     </div>
-                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <!-- Imitation -->
+                    <div class="process-card p-4 bg-slate-50 rounded-xl border border-slate-200" onclick="showProcess('imitation', this)">
                         <div class="w-12 h-12 mx-auto bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xl mb-3"><i class="fas fa-copy"></i></div>
                         <h4 class="font-bold text-slate-900">4. Imitation</h4>
-                        <p class="text-xs text-slate-600 mt-2">Competitors copy. Prices drop.</p>
+                        <p class="text-xs text-slate-600 mt-2">Competition</p>
                     </div>
                 </div>
 
-                <!-- Case Study: Invention vs Innovation -->
-                <div class="mt-8 grid md:grid-cols-2 gap-6">
-                     <div class="bg-slate-800 text-white p-6 rounded-xl shadow-md">
-                         <div class="flex justify-between items-start mb-4">
-                            <h4 class="text-lg font-bold text-white"><i class="fas fa-robot mr-2"></i> Global Case: Xerox PARC</h4>
-                            <span class="badge badge-gl">Global</span>
-                        </div>
-                        <p class="text-sm text-slate-300 mb-4">
-                            Xerox PARC invented the mouse and GUI but failed to commercialize them. Apple "borrowed" these ideas and innovated.
-                        </p>
+                <!-- Dynamic Content Display Area -->
+                <div id="process-display" class="bg-slate-50 rounded-xl p-6 border border-slate-200 min-h-[300px]">
+                    <!-- Default Content -->
+                    <div class="text-center text-slate-500 py-8">
+                        <i class="fas fa-hand-pointer text-3xl mb-2 opacity-50"></i>
+                        <p>Select a stage above to reveal details and examples.</p>
                     </div>
-                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl shadow-sm">
-                         <div class="flex justify-between items-start mb-4">
-                            <h4 class="text-lg font-bold text-slate-800"><i class="fas fa-car mr-2"></i> Indian Case: Tata Nano</h4>
-                            <span class="badge badge-in">India</span>
+                </div>
+
+                <!-- Hidden Content for JS to Pull -->
+                <div class="hidden">
+                    <!-- IDEA -->
+                    <div id="content-idea">
+                        <h4 class="text-xl font-bold text-blue-700 mb-2">Stage 1: Idea</h4>
+                        <p class="text-sm text-slate-700 mb-4">The process begins with an idea, often presented in terms of abstract concepts or findings derived from basic research. Research may be done to enhance the fundamental understanding of nature, without any commercial application or benefit in mind. In the long run, however, basic research is often transformed into applied research with commercial applications.</p>
+                        <div class="grid md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-white p-3 rounded border border-blue-100">
+                                <strong class="block text-blue-600 mb-1"><i class="fas fa-globe-americas mr-1"></i> Global Example</strong>
+                                <strong>Einstein's Light Theory:</strong> Wireless communication technology today is built on the fundamental scientific breakthroughs Albert Einstein accomplished over 100 years ago in his research on the nature of light.
+                            </div>
+                            <div class="bg-white p-3 rounded border border-blue-100">
+                                <strong class="block text-blue-600 mb-1"><i class="fas fa-flag mr-1"></i> Indian Example</strong>
+                                <strong>ISRO's Mangalyaan Concept:</strong> Started as a theoretical idea to demonstrate interplanetary mission capability with minimal budget, relying on basic physics (gravity assists) rather than brute force power.
+                            </div>
                         </div>
-                        <p class="text-sm text-slate-600 mb-4">
-                            Tata Motors invented the "People's Car" (Nano) at a $2500 price point. A brilliant invention, but faced marketing and positioning challenges (branding it as "cheap" rather than "smart").
-                        </p>
+                    </div>
+
+                    <!-- INVENTION -->
+                    <div id="content-invention">
+                        <h4 class="text-xl font-bold text-purple-700 mb-2">Stage 2: Invention</h4>
+                        <p class="text-sm text-slate-700 mb-4">Invention transforms an idea into a new product or process, or it modifies and recombines existing ones. If an invention is useful, novel, and non-obvious, it can be patented.</p>
+                        
+                        <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-4">
+                            <h5 class="font-bold text-purple-900 text-sm mb-2">Patents vs. Trade Secrets</h5>
+                            <p class="text-xs text-purple-800 mb-2"><strong>Patents:</strong> Give exclusive rights for 20 years in exchange for <em>public disclosure</em>. (Double-edged sword: reveals tech to rivals).</p>
+                            <p class="text-xs text-purple-800"><strong>Trade Secrets:</strong> Valuable proprietary info not in public domain. No expiration as long as kept secret. (e.g., Coca-Cola recipe, Netflix Algorithm).</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-white p-3 rounded border border-purple-100">
+                                <strong class="block text-purple-600 mb-1"><i class="fas fa-globe-americas mr-1"></i> Global Example</strong>
+                                <strong>Trade Secret:</strong> The Coca-Cola recipe has been protected for over a century. Public disclosure via patent would have allowed rivals to copy it after 20 years.<br>
+                                <strong>Patent:</strong> The first Microprocessor (Intel 4004).
+                            </div>
+                            <div class="bg-white p-3 rounded border border-purple-100">
+                                <strong class="block text-purple-600 mb-1"><i class="fas fa-flag mr-1"></i> Indian Example</strong>
+                                <strong>Trade Secret:</strong> <span class="italic">Rooh Afza</span> recipe by Hamdard. A century-old formula kept secret to maintain market dominance.<br>
+                                <strong>Patent:</strong> Dr. Reddy's Laboratories patents for generic drug manufacturing processes.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INNOVATION -->
+                    <div id="content-innovation">
+                        <h4 class="text-xl font-bold text-indigo-700 mb-2">Stage 3: Innovation</h4>
+                        <p class="text-sm text-slate-700 mb-4">Innovation concerns the <strong>commercialization</strong> of an invention. The successful commercialization allows a firm to earn temporary monopoly profits. First movers may benefit from network effects, economies of scale, and switching costs.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-white p-3 rounded border border-indigo-100">
+                                <strong class="block text-indigo-600 mb-1"><i class="fas fa-globe-americas mr-1"></i> Global Example</strong>
+                                <strong>Netflix:</strong> Started with business model innovation (DVD-by-mail, no late fees). Innovated further with streaming and AI recommendation engines (Trade Secret) to predict user demand.
+                            </div>
+                            <div class="bg-white p-3 rounded border border-indigo-100">
+                                <strong class="block text-indigo-600 mb-1"><i class="fas fa-flag mr-1"></i> Indian Example</strong>
+                                <strong>Paytm:</strong> Commercialized the QR code payment invention for the Indian mass market, creating a ubiquitous digital payment network (Innovation) where others saw just a tech novelty.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IMITATION -->
+                    <div id="content-imitation">
+                        <h4 class="text-xl font-bold text-orange-700 mb-2">Stage 4: Imitation</h4>
+                        <p class="text-sm text-slate-700 mb-4">If an innovation is successful, competitors will attempt to imitate it. The innovation process ends with imitation, forcing the original innovator to find the next "Gale" of destruction.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-white p-3 rounded border border-orange-100">
+                                <strong class="block text-orange-600 mb-1"><i class="fas fa-globe-americas mr-1"></i> Global Example</strong>
+                                <strong>Streaming Wars:</strong> Success of Netflix bred imitation. Disney+, HBO Max, Amazon Prime, and Apple TV+ entered the market, eroding Netflix's temporary monopoly.
+                            </div>
+                            <div class="bg-white p-3 rounded border border-orange-100">
+                                <strong class="block text-orange-600 mb-1"><i class="fas fa-flag mr-1"></i> Indian Example</strong>
+                                <strong>Quick Commerce:</strong> Blinkit (formerly Grofers) pivoted to 10-min delivery. Zepto, Swiggy Instamart, and BigBasket (BB Now) quickly imitated the model, saturating the market.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patent vs Trade Secret Comparison Table -->
+                <div class="mt-8 mb-8">
+                    
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Deep Dive: Patent vs. Trade Secret</h3>
+                    <div class="overflow-x-auto rounded-lg border border-slate-200">
+                        <table class="w-full text-sm text-left matrix-table">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-xs">
+                                <tr>
+                                    <th class="p-4 bg-slate-100">Feature</th>
+                                    <th class="p-4 bg-slate-100 text-indigo-600">Trade Secret</th>
+                                    <th class="p-4 bg-slate-100 text-purple-600">Patent</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-4 font-bold text-slate-700">Protection</td>
+                                    <td class="p-4 text-slate-600">Strict confidentiality (NDAs).</td>
+                                    <td class="p-4 text-slate-600">Government grant of exclusive rights.</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-4 font-bold text-slate-700">Disclosure</td>
+                                    <td class="p-4 text-slate-600">Must be kept <strong>secret</strong>.</td>
+                                    <td class="p-4 text-slate-600">Requires full <strong>public disclosure</strong>.</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-4 font-bold text-slate-700">Duration</td>
+                                    <td class="p-4 text-slate-600"><strong>Indefinite</strong> (if secret).</td>
+                                    <td class="p-4 text-slate-600"><strong>Limited</strong> (~20 years).</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-4 font-bold text-slate-700">Cost</td>
+                                    <td class="p-4 text-slate-600">Low (Security costs).</td>
+                                    <td class="p-4 text-slate-600">High (Legal fees).</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-4 font-bold text-slate-700">Examples</td>
+                                    <td class="p-4 text-slate-600">Coca-Cola Recipe, Google Algorithm.</td>
+                                    <td class="p-4 text-slate-600">Edison's Bulb, Pharma Drugs.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -428,6 +815,119 @@
                         <p class="text-xs text-slate-600">Oligopoly. Zero growth. Options: Exit, Harvest, or Consolidate.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- NEW SECTION: STRATEGIC SHIFTS ACROSS LIFE CYCLE -->
+        <section id="strategy-shift" class="mb-32 fade-up">
+            <div class="fp-box">
+                <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-1">Strategic Logic</p>
+                <h3 class="text-2xl font-serif font-bold text-slate-800">Strategic Shifts: Adapting to the Life Cycle</h3>
+                <p class="text-slate-600 mt-2">As an industry evolves along the S-curve, firms must adapt their strategic focus from <strong>R&D</strong> to <strong>marketing</strong> to <strong>efficiency</strong>.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Stage 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500 hover:shadow-lg transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-lg"><i class="fas fa-flask"></i></div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Stage 1</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Introduction</h4>
+                    <p class="text-xs text-slate-500 mb-4">Tech Enthusiasts. Small market. High cost.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-slate-50 p-2 rounded border border-slate-100">
+                            <p class="text-xs font-bold text-blue-700">Core Competency</p>
+                            <p class="text-xs text-slate-600">R&D and Design. Getting the product right.</p>
+                        </div>
+                        <div class="border-l-2 border-slate-300 pl-2">
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Global</p>
+                            <p class="text-xs text-slate-600">Tesla EVs (2010s) - Focus on battery tech.</p>
+                        </div>
+                        <div class="border-l-2 border-orange-300 pl-2">
+                            <p class="text-[10px] text-orange-400 uppercase font-bold">India</p>
+                            <p class="text-xs text-slate-600">Tata Nexon EV - Focus on range & charging.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-green-500 hover:shadow-lg transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-lg"><i class="fas fa-chart-line"></i></div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Stage 2</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Growth</h4>
+                    <p class="text-xs text-slate-500 mb-4">Early Adopters. Rapid demand. Standards emerge.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-slate-50 p-2 rounded border border-slate-100">
+                            <p class="text-xs font-bold text-green-700">Core Competency</p>
+                            <p class="text-xs text-slate-600">Marketing & Scale. Capture share quickly.</p>
+                        </div>
+                        <div class="border-l-2 border-slate-300 pl-2">
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Global</p>
+                            <p class="text-xs text-slate-600">Smartphones (2000s) - iPhone vs Android wars.</p>
+                        </div>
+                        <div class="border-l-2 border-orange-300 pl-2">
+                            <p class="text-[10px] text-orange-400 uppercase font-bold">India</p>
+                            <p class="text-xs text-slate-600">E-commerce Boom - Flipkart/Amazon logistics war.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-yellow-500 hover:shadow-lg transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center text-lg"><i class="fas fa-compress-arrows-alt"></i></div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Stage 3</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Shakeout</h4>
+                    <p class="text-xs text-slate-500 mb-4">Early Majority. Price wars. Consolidation.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-slate-50 p-2 rounded border border-slate-100">
+                            <p class="text-xs font-bold text-yellow-700">Core Competency</p>
+                            <p class="text-xs text-slate-600">Efficiency & Cost Control. Process innovation.</p>
+                        </div>
+                        <div class="border-l-2 border-slate-300 pl-2">
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Global</p>
+                            <p class="text-xs text-slate-600">US Airlines - Mergers & bankruptcies.</p>
+                        </div>
+                        <div class="border-l-2 border-orange-300 pl-2">
+                            <p class="text-[10px] text-orange-400 uppercase font-bold">India</p>
+                            <p class="text-xs text-slate-600">Telecom - Jio entry forced Vodafone-Idea merger.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500 hover:shadow-lg transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-lg"><i class="fas fa-leaf"></i></div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Stage 4</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Maturity/Decline</h4>
+                    <p class="text-xs text-slate-500 mb-4">Laggards. Saturation. Oligopoly.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-slate-50 p-2 rounded border border-slate-100">
+                            <p class="text-xs font-bold text-red-700">Core Competency</p>
+                            <p class="text-xs text-slate-600">Operational Excellence, Harvest, or Exit.</p>
+                        </div>
+                        <div class="border-l-2 border-slate-300 pl-2">
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Global</p>
+                            <p class="text-xs text-slate-600">Film Cameras - Kodak managing decline.</p>
+                        </div>
+                        <div class="border-l-2 border-orange-300 pl-2">
+                            <p class="text-[10px] text-orange-400 uppercase font-bold">India</p>
+                            <p class="text-xs text-slate-600">PCO Booths - Operators exiting business.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -649,7 +1149,7 @@
                 </div>
 
                 <div id="result-screen" class="hidden text-center py-12 fade-in">
-                    <div id="res-icon" class="text-7xl mb-6"></div>
+                    <div id="res-icon" class="text-7xl mb-6 animate-bounce"></div>
                     <h3 id="res-title" class="text-3xl font-bold mb-3">Result Title</h3>
                     <div id="badges-container" class="flex justify-center gap-2 mb-6 min-h-[30px]"></div>
                     <p id="res-desc" class="text-slate-300 mb-8 text-md leading-relaxed max-w-lg mx-auto">Description...</p>
@@ -700,8 +1200,73 @@
             initCharts();
         });
 
+        // 4 I's Interaction Logic
+        function showProcess(id, element) {
+            // Remove active class from all cards
+            document.querySelectorAll('.process-card').forEach(c => c.classList.remove('active'));
+            // Add active class to clicked card
+            element.classList.add('active');
+            
+            // Get content from hidden div
+            const content = document.getElementById('content-' + id).innerHTML;
+            
+            // Update display area
+            const display = document.getElementById('process-display');
+            display.innerHTML = content;
+            
+            // Add animation class
+            display.classList.remove('animate-fade-in');
+            void display.offsetWidth; // trigger reflow
+            display.classList.add('animate-fade-in');
+        }
+
         function initCharts() {
-            // 1. Lifecycle S-Curve
+            // 1. SPEED OF INNOVATION CHART (Horizontal Bar)
+            const ctxSpeed = document.getElementById('speedChart').getContext('2d');
+            new Chart(ctxSpeed, {
+                type: 'bar',
+                data: {
+                    labels: ['Car (84)', 'Airplane (75)', 'Telephone (71)', 'Electricity (52)', 'VCR (37)', 'Microwave (35)', 'Radio (33)', 'TV (28)', 'PC (19)', 'Cell Phone (14)', 'Internet (10)', 'MP3 (6)'],
+                    datasets: [{
+                        label: 'Years to 50% Adoption',
+                        data: [84, 75, 71, 52, 37, 35, 33, 28, 19, 14, 10, 6],
+                        backgroundColor: (ctx) => {
+                            const val = ctx.raw;
+                            if (val < 20) return '#ef4444'; // Fast (Red)
+                            if (val < 50) return '#f59e0b'; // Medium (Amber)
+                            return '#3b82f6'; // Slow (Blue)
+                        },
+                        borderRadius: 4,
+                        barPercentage: 0.7
+                    }]
+                },
+                options: {
+                    indexAxis: 'y', // Horizontal Bar Chart
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.raw + ' years to reach 50% of US households';
+                                }
+                            }
+                        }
+                    },
+                    scales: { 
+                        x: { 
+                            title: { display: true, text: 'Years to 50% Adoption' },
+                            beginAtZero: true 
+                        },
+                        y: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // 2. Lifecycle S-Curve
             const ctxLifecycle = document.getElementById('lifecycleChart').getContext('2d');
             new Chart(ctxLifecycle, {
                 type: 'line',
@@ -729,7 +1294,7 @@
                 }
             });
 
-            // 2. Chasm Bell Curve
+            // 3. Chasm Bell Curve
             const ctxChasm = document.getElementById('chasmChart').getContext('2d');
             new Chart(ctxChasm, {
                 type: 'line',
